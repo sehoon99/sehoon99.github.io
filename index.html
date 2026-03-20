@@ -442,12 +442,15 @@ footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;justify
     <div style="height:100px"></div>
   </div>
   <div class="admin-save-bar">
-    <span class="save-note">저장 후 포트폴리오에 즉시 반영</span>
-    <div style="display:flex;gap:10px">
-      <button class="abtn abtn-ghost" onclick="resetAll()">초기화</button>
-      <button class="abtn abtn-primary" onclick="saveAll()">💾 &nbsp;저장하고 적용</button>
-    </div>
+  <span class="save-note">저장 후 포트폴리오에 즉시 반영</span>
+  <div style="display:flex;gap:10px;align-items:center">
+    <span class="saved-ok" id="save-msg">저장됨 ✓</span>
+    <span id="copy-msg" style="font-family:var(--font-mono);font-size:12px;color:var(--teal);opacity:0;transition:opacity .3s">복사됨 ✓</span>
+    <button class="abtn abtn-ghost" onclick="resetAll()">초기화</button>
+    <button class="abtn abtn-primary" onclick="saveAll()">💾 &nbsp;저장하고 적용</button>
+    <button class="abtn abtn-ghost" onclick="saveAndCopy()" style="border-color:var(--teal);color:var(--teal)">📋 &nbsp;저장 + 클립보드 복사</button>
   </div>
+</div>
 </div>
 
 <script>
@@ -1195,6 +1198,36 @@ const skillObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isInt
 document.querySelectorAll('.skills-layout').forEach(el=>skillObs.observe(el));
 
 applyToMain();
+
+async function saveAndCopy() {
+  // 1. 먼저 저장 (기존 saveAll 로직 실행)
+  saveAll();
+
+  // 2. 현재 DEF 기본값들을 localStorage 값으로 업데이트한 HTML 생성
+  // document.documentElement.outerHTML 은 현재 DOM 그대로 (이미 저장된 상태)
+  const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+
+  // 3. 클립보드 복사
+  try {
+    await navigator.clipboard.writeText(html);
+    const msg = document.getElementById('copy-msg');
+    msg.style.opacity = '1';
+    setTimeout(() => msg.style.opacity = '0', 2500);
+  } catch (e) {
+    // clipboard API 안 될 때 fallback
+    const ta = document.createElement('textarea');
+    ta.value = html;
+    ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const msg = document.getElementById('copy-msg');
+    msg.style.opacity = '1';
+    setTimeout(() => msg.style.opacity = '0', 2500);
+  }
+}
+
 </script>
 </body>
 </html>
