@@ -1332,6 +1332,8 @@ function applyLabels(lang){
 
 /* ── APPLY ALL ── */
 function applyToMain(){
+  document.getElementById('admin-page').classList.remove('active');
+  document.getElementById('egg-page').classList.remove('active');
   const lang=D.lang;const ko=lang==='ko';
   applyBg(D.bg);
   document.getElementById('main-name').textContent=D.nameKo;
@@ -1758,6 +1760,12 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 const skillObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.skill-fill').forEach(b=>{setTimeout(()=>{b.style.width=b.dataset.width+'%';},200);});skillObs.unobserve(e.target);}});},{threshold:.3});
 document.querySelectorAll('.skills-layout').forEach(el=>skillObs.observe(el));
 
+
+// 새로고침 시 관리자/이스터에그 페이지 강제 닫기
+document.getElementById('admin-page').classList.remove('active');
+document.getElementById('egg-page').classList.remove('active');
+
+applyToMain();
 applyToMain();
 
 async function saveAndCopy() {
