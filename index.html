@@ -1767,21 +1767,31 @@ applyToMain();
 applyToMain();
 
 async function saveAndCopy() {
-  // 1. 먼저 저장 (기존 saveAll 로직 실행)
+  // 1. 먼저 저장
   saveAll();
 
-  // 2. 현재 DEF 기본값들을 localStorage 값으로 업데이트한 HTML 생성
-  // document.documentElement.outerHTML 은 현재 DOM 그대로 (이미 저장된 상태)
-  const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+  // 2. 원본 index.html 파일을 서버에서 가져오기
+  const response = await fetch(location.href);
+  let html = await response.text();
 
-  // 3. 클립보드 복사
+  // 3. DEF 값들을 현재 저장된 D 값으로 교체
+  const keys = ['aboutKo','aboutEn','metricsKo','metricsEn','projects','skills','academia','certs','footer','bg','nameKo','nameSub','birthday','heroTag'];
+  keys.forEach(key => {
+    const val = localStorage.getItem('hsh_' + key);
+    if (!val) return;
+    // DEF 안의 해당 key 값을 현재 저장값으로 교체
+    const regex = new RegExp(`(DEF\\.${key}\\s*=\\s*|${key}:\\s*ld\\('[^']*',\\s*)([^,;\\n]+)`, 'g');
+    // 대신 DEF 객체 전체를 새 값으로 교체하는 방식
+  });
+
+  // 실제로는 DEF 블록 전체를 현재 D 값으로 통째로 교체
+  const defBlock = `const DEF=${JSON.stringify(D,null,2)};`;
+  html = html.replace(/const DEF=\{[\s\S]*?\};(\s*\n)/, defBlock + '$1');
+
+  // 4. 클립보드 복사
   try {
     await navigator.clipboard.writeText(html);
-    const msg = document.getElementById('copy-msg');
-    msg.style.opacity = '1';
-    setTimeout(() => msg.style.opacity = '0', 2500);
-  } catch (e) {
-    // clipboard API 안 될 때 fallback
+  } catch(e) {
     const ta = document.createElement('textarea');
     ta.value = html;
     ta.style.cssText = 'position:fixed;opacity:0';
@@ -1789,12 +1799,12 @@ async function saveAndCopy() {
     ta.select();
     document.execCommand('copy');
     document.body.removeChild(ta);
-    const msg = document.getElementById('copy-msg');
-    msg.style.opacity = '1';
-    setTimeout(() => msg.style.opacity = '0', 2500);
   }
-}
 
+  const msg = document.getElementById('copy-msg');
+  msg.style.opacity = '1';
+  setTimeout(() => msg.style.opacity = '0', 2500);
+}
 </script>
 
 
