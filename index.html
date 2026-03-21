@@ -201,6 +201,23 @@ footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;justify
   .admin-wrap{padding:40px 20px}.admin-save-bar{margin:0 -20px;padding:16px 20px}
   .admin-row2,.admin-row3,.skill-row-admin{grid-template-columns:1fr}h1{font-size:42px}.hero-metrics{gap:24px}
 }
+
+  /* PROJECT IMAGE SLIDER */
+.proj-slider{position:relative;width:100%;max-width:500px;margin:0 0 20px 0;border-radius:10px;overflow:hidden;background:var(--surface);line-height:0}
+.proj-slider::before{content:'';display:block;padding-top:56.25%}
+.proj-slides-wrap{position:absolute;inset:0;overflow:hidden}
+.proj-slides{display:flex;width:100%;height:100%;transition:transform .38s cubic-bezier(.4,0,.2,1)}
+.proj-slide{flex-shrink:0;width:100%;height:100%}
+.proj-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.proj-slider-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(10,10,15,.72);border:1px solid var(--border2);color:var(--text);font-size:20px;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:2;line-height:1;padding:0}
+.proj-slider-btn:hover{background:var(--accent)}
+.proj-slider-btn.prev{left:8px}
+.proj-slider-btn.next{right:8px}
+.proj-slider-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2}
+.proj-slider-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.38);cursor:pointer;transition:background .2s;border:none;padding:0}
+.proj-slider-dot.active{background:#fff}
+.img-url-list{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+.img-url-row{display:grid;grid-template-columns:1fr 36px;gap:8px;align-items:center}
 </style>
 </head>
 <body>
@@ -252,6 +269,7 @@ footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;justify
         <div class="project-toggle">+</div>
       </div>
       <div class="project-detail"><div class="detail-inner">
+         ${sliderHtml}
         <div class="detail-section"><div class="detail-label">핵심 구현</div>
           <ul class="ach-list"><li>GitHub Actions 스케줄러로 매일 Playwright 크롤러 실행 — AI 뉴스 자동 수집 및 RDS 적재 파이프라인 구축</li><li>Daily Batch로 키워드별 빈도 집계 — 실시간 집계 대신 통계 테이블 참조로 API 응답속도 및 DB 부하 개선</li><li>D3.js 버블 차트로 상위 50개 키워드 시각화 / AWS SES로 관심 키워드 상승률 이메일 자동 발송</li><li>AWS Lambda로 AI 이미지 판별 로직 분리 — 이벤트 기반으로 서버 자원 효율화</li><li>Spot Instance + ECS + ASG 조합으로 비용 50% 절감 / Prometheus + Grafana로 실시간 모니터링</li></ul>
         </div>
@@ -271,6 +289,7 @@ footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;justify
         <div class="project-toggle">+</div>
       </div>
       <div class="project-detail"><div class="detail-inner">
+         ${sliderHtml}
         <div class="detail-section"><div class="detail-label">핵심 구현</div>
           <ul class="ach-list"><li>Playwright 기반 크롤러로 CGV사의 동적 렌더링 굿즈 재고 데이터 자동 수집 및 DB 적재</li><li>PostGIS 공간 인덱싱으로 사용자 위경도 기반 실시간 최근접 매장 탐색</li><li>Terraform IaC로 VPC, RDS, S3, CloudFront 등 AWS 전체 인프라를 코드화 — 환경 재현성 확보</li><li>GitGuardian을 CI/CD에 연동하여 소스코드 내 민감 정보 유출 원천 차단</li><li>CloudFront CDN으로 정적 에셋 배포 — 서버 부하 분산 및 응답속도 향상</li><li>Flyway로 DB 스키마 버전 관리 — 마이그레이션 이력 추적 자동화</li></ul>
         </div>
@@ -290,6 +309,7 @@ footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;justify
         <div class="project-toggle">+</div>
       </div>
       <div class="project-detail"><div class="detail-inner">
+         ${sliderHtml}
         <div class="detail-section"><div class="detail-label">핵심 구현</div>
           <ul class="ach-list"><li>공공데이터 1만 건 이상 수집 후 MyBatis로 MySQL 적재 — SQL 직접 제어로 조회 성능 최적화</li><li>Prompt Engineering으로 GPT에 사용자 취향 전달 및 일관된 JSON 응답 유도</li><li>유전 알고리즘(Genetic Algorithm) + 2-opt 적용 — 응답시간 80% 단축 (60초 → 10초 이하)</li><li>자주 조회되는 관광지 데이터 인메모리 캐싱으로 DB 부하 최소화</li><li>AWS SSM Parameter Store로 민감 정보 런타임 호출 — 코드 노출 방지</li></ul>
         </div>
@@ -309,6 +329,7 @@ footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;justify
         <div class="project-toggle">+</div>
       </div>
       <div class="project-detail"><div class="detail-inner">
+         ${sliderHtml}
         <div class="detail-section"><div class="detail-label">핵심 구현</div>
           <ul class="ach-list"><li>DU, CU, RU, 코어망을 각각 Docker 컨테이너로 분리 가상화 — 컴포넌트 간 통신 흐름 직접 테스트</li><li>더미 데이터로 네트워크 부하 시뮬레이션 / Prometheus로 컨테이너별 자원 사용량 실시간 수집</li><li>컨테이너 장애 원인 분석 → 아키텍처 재설계 반복 — 5G 프로토콜 스택 실무 이해 심화</li></ul>
         </div>
@@ -1093,6 +1114,7 @@ const DEF={
         "Automated DB schema versioning and migration history with Flyway"
       ],
       "stack": "Terraform, AWS, Spring Boot, React + Vite, PostgreSQL, Flyway, Playwright, Atlantis, Swagger"
+      "images": [] 
     },
     {
       "icon": "✈️",
@@ -1115,6 +1137,7 @@ const DEF={
         "In-memory caching for frequently accessed attraction data to minimize DB load"
       ],
       "stack": "Terraform,  AWS, Spring Boot, MyBatis, MySQL, Oracle DB"
+      "images": [] 
     },
     {
       "icon": "📰",
@@ -1139,6 +1162,7 @@ const DEF={
         "50% cost reduction via Spot Instance + ECS + ASG / Real-time monitoring with Prometheus + Grafana"
       ],
       "stack": "Terraform, AWS, Spring Boot, Jenkins, GitOps, MySQL, Next.js, D3.js"
+      "images": [] 
     },
     {
       "icon": "📡",
@@ -1157,6 +1181,7 @@ const DEF={
         "Network load simulation with dummy data / Prometheus metrics collection per container"
       ],
       "stack": "Docker, OpenRAN, 5G Core, Prometheus,grafana, Linux,  SRSRan"
+      "images": [] 
     }
   ],
   "skills": [
@@ -1471,6 +1496,17 @@ function applyProjectsToMain(projects,lang){
     const bullets=ko?p.bulletsKo:p.bulletsEn;
     const detailLabel=ko?'핵심 구현':'Key Implementation';
     const stackLabel=ko?'기술 스택':'Tech Stack';
+    const imgs=(p.images||[]).filter(u=>u&&u.trim());
+    const sliderHtml=imgs.length?`
+  <div class="proj-slider" data-idx="0">
+    <div class="proj-slides-wrap"><div class="proj-slides">
+      ${imgs.map(u=>`<div class="proj-slide"><img src="${eh(u)}" alt="" loading="lazy" onerror="this.closest('.proj-slide').style.display='none'"></div>`).join('')}
+    </div></div>
+    ${imgs.length>1?`
+      <button class="proj-slider-btn prev" onclick="event.stopPropagation();slideProj(this,-1)">&#8249;</button>
+      <button class="proj-slider-btn next" onclick="event.stopPropagation();slideProj(this,1)">&#8250;</button>
+      <div class="proj-slider-dots">${imgs.map((_,i)=>`<button class="proj-slider-dot${i===0?' active':''}" onclick="event.stopPropagation();slideProjTo(this,${i})"></button>`).join('')}</div>`:''}
+  </div>`:'';
     return `<div class="project-card" onclick="toggleProject(this)">
       <div class="project-summary">
         <div class="project-icon">${p.icon}</div>
@@ -1677,6 +1713,12 @@ function renderAdmin(){
             <div class="admin-field"><div class="admin-input-label">Key Points (line-break separated)</div><textarea class="admin-textarea p-bullets-en" rows="5" style="min-height:120px">${(p.bulletsEn||[]).map(b=>eh(b)).join('\n')}</textarea></div>
           </div>
         </div>
+        <div class="admin-field">
+  <div class="admin-input-label" style="color:var(--accent2);margin-bottom:6px">🖼️ 이미지 URL (최대 5개 · 16:9 권장)</div>
+  <div class="img-url-list">
+    ${Array.from({length:5},(_,j)=>{const url=(p.images&&p.images[j])||'';return `<div class="img-url-row"><input class="admin-input p-img-url" value="${eh(url)}" placeholder="https://raw.githubusercontent.com/..." style="font-family:var(--font-mono);font-size:12px"><button class="abtn-danger" onclick="this.previousElementSibling.value=''">✕</button></div>`;}).join('')}
+  </div>
+</div>
         <div style="text-align:right"><button class="abtn-danger" onclick="this.closest('div[style]').parentElement.remove()">✕ 삭제</button></div>
       </div>`;
     pl.appendChild(item);
@@ -1913,6 +1955,8 @@ function saveAll(){
       bulletsKo:b.querySelector('.p-bullets-ko').value.split('\n').map(s=>s.trim()).filter(s=>s),
       bulletsEn:b.querySelector('.p-bullets-en').value.split('\n').map(s=>s.trim()).filter(s=>s),
       stack:b.querySelector('.p-stack').value,
+      images:[...b.querySelectorAll('.p-img-url')].map(i=>i.value.trim()).filter(u=>u).slice(0,5),
+      
     });
   });
   sv('projects',D.projects);
@@ -1960,6 +2004,16 @@ function resetAll(){
   renderAdmin();applyToMain();
 }
 
+function _moveSlider(s,idx){
+  const slides=s.querySelector('.proj-slides');
+  const total=s.querySelectorAll('.proj-slide').length;
+  idx=(idx+total)%total;s.dataset.idx=idx;
+  slides.style.transform=`translateX(-${idx*100}%)`;
+  s.querySelectorAll('.proj-slider-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+}
+function slideProj(btn,dir){const s=btn.closest('.proj-slider');_moveSlider(s,parseInt(s.dataset.idx)+dir);}
+function slideProjTo(dot,idx){_moveSlider(dot.closest('.proj-slider'),idx);}
+    
 /* ── MAIN INTERACTIONS ── */
 function toggleProject(card){
   const isOpen=card.classList.contains('open');
