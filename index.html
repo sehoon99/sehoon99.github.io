@@ -1094,7 +1094,7 @@ const DEF={
       "period": "2025.12 — 2026.01",
       "descKo": "영화관별 한정판 굿즈 재고를 실시간 크롤링하고, 사용자 위치 기반으로 가장 가까운 보유 매장을 안내하는 서비스. Terraform IaC 기반 인프라 자동화와 DevSecOps CI/CD 파이프라인 구축을 주도.",
       "descEn": "A real-time service that crawls limited-edition goods inventory across cinema chains and recommends the nearest store based on user location. Led Terraform IaC infrastructure automation and DevSecOps CI/CD pipeline.",
-      "tags": "Terraform, Atlantis, AWS, GitHub Actions, GitGuardian, Spring Boot, PostgreSQL(PostGIS), Flyway, Playwright",
+      "tags": "Terraform, AWS, Spring Boot, React + Vite, PostgreSQL, Flyway, Playwright, Atlantis, Swagger",
       "bulletsKo": [
         "Playwright 기반 크롤러로 CGV사의 동적 렌더링 굿즈 재고 데이터 자동 수집 및 DB 적재",
         "PostGIS 공간 인덱싱으로 사용자 위경도 기반 실시간 최근접 매장 탐색",
@@ -1115,7 +1115,7 @@ const DEF={
         "Deployed static assets via CloudFront CDN to reduce server load",
         "Automated DB schema versioning and migration history with Flyway"
       ],
-      "stack": "Terraform, Atlantis, AWS, GitHub Actions, GitGuardian, Spring Boot, PostgreSQL(PostGIS), Flyway, Playwright",
+      "stack": "Terraform, AWS, Spring Boot, React + Vite, PostgreSQL, Flyway, Playwright, Atlantis, Swagger",
       "images": [
         "https://sehoon99.github.io/image/cine-catch-1.png",
         "https://sehoon99.github.io/image/cine-catch-2.png",
@@ -1131,7 +1131,7 @@ const DEF={
       "period": "2023.03 — 2023.06",
       "descKo": "공공데이터 1만 건 이상과 GPT 추론 능력을 결합해 동선 최적화된 맞춤형 여행 일정을 생성하는 서비스. TSP 최적화로 응답시간 80% 단축.",
       "descEn": "A service combining 10,000+ public data entries with GPT to generate optimized travel itineraries. Reduced response time by 80% via genetic algorithm-based TSP optimization.",
-      "tags": "AWS, Spring Boot, OracleDB, MyBatis, OpenAI API",
+      "tags": "Terraform,  AWS, Spring Boot, MyBatis, MySQL, Oracle DB",
       "bulletsKo": [
         "공공데이터 1만 건 이상 수집 후 MyBatis로 MySQL 적재 — SQL 직접 제어로 조회 성능 최적화",
         "Prompt Engineering으로 GPT에 사용자 취향 전달 및 일관된 JSON 응답 유도",
@@ -1144,7 +1144,7 @@ const DEF={
         "Applied 2-opt for TSP — 80% response time reduction (60s → under 10s based on a 3-night, 4-day trip)",
         "In-memory caching for frequently accessed attraction data to minimize DB load"
       ],
-      "stack": "AWS, Spring Boot, OracleDB, MyBatis, OpenAI API",
+      "stack": "Terraform,  AWS, Spring Boot, MyBatis, MySQL, Oracle DB",
       "images": [
         "https://sehoon99.github.io/image/STP-1.png"
       ]
@@ -1156,7 +1156,7 @@ const DEF={
       "period": "2026.02 — 2026.03",
       "descKo": "매일 AI 뉴스를 자동 수집해 키워드 트렌드를 시각화하고, 관심 키워드 상승률을 이메일로 자동 리포팅하는 서비스. Spot Instance + ECS 조합으로 인프라 비용 50% 절감.",
       "descEn": "Automatically collects AI news daily, visualizes keyword trends, and sends personalized email reports on keyword rise rates. Reduced infra costs by 50% using Spot Instance + ECS.",
-      "tags": "Terraform, Jenkins, AWS, GitGuardian, Prometheus, Grafana, Docker, Spring Boot, MySQL, Flyway, D3.js",
+      "tags": "Terraform, AWS, Spring Boot, Jenkins, MySQL, Next.js, D3.js, Flyway",
       "bulletsKo": [
         "EventBridge 스케줄러로 매시간 Lambda 크롤러 실행 — AI 뉴스 자동 수집 및 RDS 적재 파이프라인 구축",
         "Daily Batch로 키워드별 빈도 집계 — 실시간 집계 대신 통계 테이블 참조로 API 응답속도 및 DB 부하 개선",
@@ -1165,7 +1165,7 @@ const DEF={
         "Jenkins를 통한 CI/CD 구축, Blue/Green 배포",
         "SOPS, KMS, SSM 연동 보안 관리",
         "CloudFront CDN으로 정적 에셋 배포 — 서버 부하 분산 및 응답속도 향상",
-        "Spot Instance + ECS + ASG 조합으로 비용 50% 절감 / Prometheus + Grafana로 실시간 모니터링"
+        "Spot Instance + ECS + ASG 조합으로 비용 50% 이상 절감 / Prometheus + Grafana로 실시간 모니터링"
       ],
       "bulletsEn": [
         "Run Hourly Crawler with EventBridge Scheduler — Build AI News Automated Collection and RDS Loading Pipeline",
@@ -1175,9 +1175,9 @@ const DEF={
         "Build CI/CD for Jenkins, Blue/Green Deployment",
         "SOPS, KMS and SSM Casting Security Management",
         "Deploy Static Assets with CloudFront CDN — Improve Server Distribution and Response Speed",
-        "50% cost reduction via Spot Instance + ECS + ASG / Real-time monitoring with Prometheus + Grafana"
+        "Over 50% cost reduction via Spot Instance + ECS + ASG / Real-time monitoring with Prometheus + Grafana"
       ],
-      "stack": "Terraform, Jenkins, AWS, GitGuardian, Prometheus, Grafana, Docker, Spring Boot, MySQL, Flyway, D3.js",
+      "stack": "Terraform, AWS, Spring Boot, Jenkins, MySQL, Next.js, D3.js, Flyway",
       "images": [
         "https://sehoon99.github.io/image/ai-news-1.png",
         "https://sehoon99.github.io/image/ai-news-2.png"
@@ -1257,7 +1257,7 @@ const DEF={
       "type": "skill",
       "name": "PostgreSQL / MySQL / MyBatis",
       "level": "",
-      "pct": 80,
+      "pct": 60,
       "color": "linear-gradient(90deg,#4ade80,#2dd4bf)"
     },
     {
