@@ -432,7 +432,11 @@ footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;justify
 <script>
 const DEF = {
   "lang": "ko",
-  "bg": { "type": "gradient", "color": "#0f0f0f", "image": "" },
+  "bg": {
+    "type": "gradient",
+    "color": "#0f0f0f",
+    "image": ""
+  },
   "nameKo": "홍성훈",
   "nameSub": "Hong Seong Hun",
   "birthday": "1999.08.17",
@@ -440,19 +444,43 @@ const DEF = {
   "heroTagEn": "Backend / DevOps / Cloud Engineer · Junior",
   "heroHighlightKo": "1저자 SCI 논문 보유",
   "heroHighlightEn": "1st-Author SCI Publication",
-  "aboutKo": "<img src=\"image/profile.jpg\" alt=\"프로필\" style=\"width:200px; border-radius:12px; float:left; margin-right:24px; margin-bottom:8px;\">Spring Boot 기반 백엔드와 AWS·Terraform 기반 인프라를 직접 설계하고 운영해온 신입 엔지니어입니다.<br><br><strong>백엔드 영역</strong>에서는 Spring Boot로 REST API를 직접 설계하고, MyBatis로 데이터 접근 계층을 구현하며, RDBMS 모델링과 인덱스 전략을 통해 조회 성능을 최적화했습니다. Sightengine·OpenAI·AWS SES 같은 외부 API를 비동기 처리로 통합하고, Spring Scheduler 기반 배치로 통계 데이터를 처리했습니다.<br><br><strong>인프라·DevOps 영역</strong>에서는 Terraform IaC로 AWS 전체 인프라를 코드화하고, Atlantis로 GitOps 절차를 구축했습니다. Jenkins + AWS CodeBuild로 Blue/Green 무중단 배포를, GitHub Actions로 Rolling 배포를 운영하며 두 가지 배포 전략을 모두 경험했습니다. SOPS·SSM·GitGuardian으로 시크릿 보안 체계를 3단계로 구축했고, NAT Gateway 제거 + Spot Instance + ECS/ASG 조합으로 인프라 비용 60%를 절감했습니다.<br><br>API 한 줄부터 인프라 자원 하나까지 서비스 전체를 책임지는 시야로, 사용자에게는 빠르고 쾌적한 경험을, 운영자에게는 편하며 안전하고 추적 가능한 환경을 제공하는 서비스를 만들고자 합니다.<br style=\"clear:both\"><br><div style=\"clear:both;display:flex;gap:24px;align-items:center;flex-wrap:wrap\"><span style=\"font-size:15px;color:#f0ede5\">Email: sehoon99@naver.com</span><a href=\"https://github.com/sehoon99\" style=\"font-size:15px;color:#f0ede5;text-decoration:none\">GitHub</a><a href=\"https://bright-huny.tistory.com\" style=\"font-size:15px;color:#f0ede5;text-decoration:none\">Blog</a><a href=\"https://www.linkedin.com/in/seonghun-hong-0928ba238\" style=\"font-size:15px;color:#f0ede5;text-decoration:none\">LinkedIn</a></div>",
-  "aboutEn": "<img src=\"image/profile.jpg\" alt=\"Profile\" style=\"width:200px; border-radius:12px; float:left; margin-right:24px; margin-bottom:8px;\">A junior engineer with hands-on experience designing and operating <strong>Spring Boot backend</strong> and <strong>AWS·Terraform infrastructure</strong>.<br><br>On the <strong>backend side</strong>, I have designed REST APIs with Spring Boot, implemented data access layers with MyBatis, and optimized query performance through RDBMS modeling and indexing strategies. I have integrated external APIs (Sightengine, OpenAI, AWS SES) asynchronously and processed statistics data via Spring Scheduler-based batch jobs.<br><br>On the <strong>infrastructure and DevOps side</strong>, I have codified entire AWS infrastructure with Terraform IaC and built GitOps workflows via Atlantis. I have operated two deployment strategies — Blue/Green zero-downtime deployment with Jenkins + AWS CodeBuild, and Rolling deployment with GitHub Actions. I have built a 3-stage secret security system with SOPS, SSM, and GitGuardian, and reduced infrastructure costs by 60% through NAT Gateway removal + Spot Instance + ECS/ASG.<br><br>With a perspective that takes responsibility for the entire service — from a single API endpoint to a single infrastructure resource — I aim to build services that deliver fast, smooth experiences for users, and safe, traceable, manageable environments for operators.<br style=\"clear:both\"><br><div style=\"clear:both;display:flex;gap:24px;align-items:center;flex-wrap:wrap\"><span style=\"font-size:15px;color:#f0ede5\">Email: sehoon99@naver.com</span><a href=\"https://github.com/sehoon99\" style=\"font-size:15px;color:#f0ede5;text-decoration:none\">GitHub</a><a href=\"https://bright-huny.tistory.com\" style=\"font-size:15px;color:#f0ede5;text-decoration:none\">Blog</a><a href=\"https://www.linkedin.com/in/seonghun-hong-0928ba238\" style=\"font-size:15px;color:#f0ede5;text-decoration:none\">LinkedIn</a></div>",
+  "aboutKo": "<img src=\"image/profile.jpg\" alt=\"프로필\" style=\"width:200px; border-radius:12px; float:left; margin-right:24px; margin-bottom:8px;\">Spring Boot 기반 백엔드와 AWS·Terraform 기반 인프라를 직접 설계하고 운영해온 신입 엔지니어입니다.<br><br><strong>백엔드 영역</strong>에서는 Spring Boot로 REST API를 직접 설계하고, MyBatis로 데이터 접근 계층을 구현하며, RDBMS 모델링과 인덱스 전략을 통해 조회 성능을 최적화했습니다. 외부 API를 비동기 처리로 통합하고, Spring Scheduler, AWS SQS 기반 배치로 데이터를 처리했습니다.<br><br><strong>인프라·DevOps 영역</strong>에서는 Terraform IaC로 AWS 전체 인프라를 코드화하고, Atlantis로 GitOps 절차를 구축했습니다. Jenkins + AWS CodeBuild로 Blue/Green 무중단 배포를, GitHub Actions로 Rolling 배포를 운영하며 두 가지 배포 전략을 모두 경험했습니다. SOPS, SSM, GitGuardian으로 시크릿 보안 체계를 3단계로 구축했고, NAT Gateway 제거 + Spot Instance + ECS/ASG 조합으로 인프라 비용 60%를 절감했습니다.<br><br>API 한 줄부터 인프라 자원 하나까지 서비스 전체를 책임지는 시야로, 사용자에게는 빠르고 쾌적한 경험을, 운영자에게는 편하며 안전하고 추적 가능한 환경을 제공하는 서비스를 만들고자 합니다.<br style=\"clear:both\"><br><div style=\"clear:both;display:flex;gap:24px;align-items:center;flex-wrap:wrap\"><span style=\"font-size:15px;color:#f0ede5\">Email: sehoon99@naver.com</span><a href=\"https://github.com/sehoon99\" style=\"font-size:15px;color:#f0ede5;text-decoration:none\">GitHub</a><a href=\"https://bright-huny.tistory.com\" style=\"font-size:15px;color:#f0ede5;text-decoration:none\">Blog</a><a href=\"https://www.linkedin.com/in/seonghun-hong-0928ba238\" style=\"font-size:15px;color:#f0ede5;text-decoration:none\">LinkedIn</a></div>",
+  "aboutEn": "<img src=\"image/profile.jpg\" alt=\"Profile\" style=\"width:200px; border-radius:12px; float:left; margin-right:24px; margin-bottom:8px;\">A junior engineer with hands-on experience designing and operating <strong>Spring Boot backend</strong> and <strong>AWS, Terraform infrastructure</strong>.<br><br>On the <strong>backend side</strong>, I have designed REST APIs with Spring Boot, implemented data access layers with MyBatis, and optimized query performance through RDBMS modeling and indexing strategies. I have integrated external APIs asynchronously and processed statistics data via Spring Scheduler-based batch jobs.<br><br>On the <strong>infrastructure and DevOps side</strong>, I have codified entire AWS infrastructure with Terraform IaC and built GitOps workflows via Atlantis. I have operated two deployment strategies — Blue/Green zero-downtime deployment with Jenkins + AWS CodeBuild, and Rolling deployment with GitHub Actions. I have built a 3-stage secret security system with SOPS, SSM, and GitGuardian, and reduced infrastructure costs by 60% through NAT Gateway removal + Spot Instance + ECS/ASG.<br><br>With a perspective that takes responsibility for the entire service — from a single API endpoint to a single infrastructure resource — I aim to build services that deliver fast, smooth experiences for users, and safe, traceable, manageable environments for operators.<br style=\"clear:both\"><br><div style=\"clear:both;display:flex;gap:24px;align-items:center;flex-wrap:wrap\"><span style=\"font-size:15px;color:#f0ede5\">Email: sehoon99@naver.com</span><a href=\"https://github.com/sehoon99\" style=\"font-size:15px;color:#f0ede5;text-decoration:none\">GitHub</a><a href=\"https://bright-huny.tistory.com\" style=\"font-size:15px;color:#f0ede5;text-decoration:none\">Blog</a><a href=\"https://www.linkedin.com/in/seonghun-hong-0928ba238\" style=\"font-size:15px;color:#f0ede5;text-decoration:none\">LinkedIn</a></div>",
   "metricsKo": [
-    { "num": "80%", "label": "응답시간 단축" },
-    { "num": "60%", "label": "인프라 비용 절감" },
-    { "num": "73.3%", "label": "통신 효율 향상" },
-    { "num": "11건", "label": "국내외 학회 발표" }
+    {
+      "num": "80%",
+      "label": "응답시간 단축"
+    },
+    {
+      "num": "60%",
+      "label": "인프라 비용 절감"
+    },
+    {
+      "num": "73.3%",
+      "label": "통신 효율 향상"
+    },
+    {
+      "num": "11건",
+      "label": "국내외 학회 발표"
+    }
   ],
   "metricsEn": [
-    { "num": "80%", "label": "Response time cut" },
-    { "num": "60%", "label": "Infra cost saved" },
-    { "num": "73.3%", "label": "Comm. efficiency" },
-    { "num": "11", "label": "Conf. presentations" }
+    {
+      "num": "80%",
+      "label": "Response time cut"
+    },
+    {
+      "num": "60%",
+      "label": "Infra cost saved"
+    },
+    {
+      "num": "73.3%",
+      "label": "Comm. efficiency"
+    },
+    {
+      "num": "11",
+      "label": "Conf. presentations"
+    }
   ],
   "projects": [
     {
@@ -580,28 +608,145 @@ const DEF = {
     }
   ],
   "skills": [
-    { "type": "group", "label": "☁️ Cloud / Infrastructure" },
-    { "type": "skill", "name": "AWS", "level": "구조 설계 · 운영", "pct": 75, "color": "linear-gradient(90deg,#d4a73e,#e6bf60)" },
-    { "type": "skill", "name": "Terraform", "level": "IaC 주도 설계", "pct": 75, "color": "linear-gradient(90deg,#d4a73e,#e6bf60)" },
-    { "type": "skill", "name": "Atlantis", "level": "GitOps 적용", "pct": 65, "color": "linear-gradient(90deg,#d4a73e,#e6bf60)" },
-    { "type": "skill", "name": "Docker", "level": "컨테이너 운영", "pct": 60, "color": "linear-gradient(90deg,#d4a73e,#e6bf60)" },
-    { "type": "group", "label": "🔄 CI/CD · DevSecOps" },
-    { "type": "skill", "name": "GitHub Actions", "level": "파이프라인 구축", "pct": 80, "color": "linear-gradient(90deg,#8a9a5b,#d4a73e)" },
-    { "type": "skill", "name": "Jenkins", "level": "Blue/Green 배포", "pct": 70, "color": "linear-gradient(90deg,#8a9a5b,#d4a73e)" },
-    { "type": "skill", "name": "AWS CodeBuild", "level": "빌드 자동화", "pct": 65, "color": "linear-gradient(90deg,#8a9a5b,#d4a73e)" },
-    { "type": "skill", "name": "GitGuardian / SOPS", "level": "시크릿 보안", "pct": 70, "color": "linear-gradient(90deg,#8a9a5b,#d4a73e)" },
-    { "type": "group", "label": "💻 Backend" },
-    { "type": "skill", "name": "Java / Spring Boot", "level": "REST API 설계", "pct": 70, "color": "linear-gradient(90deg,#c97e5e,#d4a73e)" },
-    { "type": "skill", "name": "Spring Scheduler", "level": "배치 처리", "pct": 65, "color": "linear-gradient(90deg,#c97e5e,#d4a73e)" },
-    { "type": "skill", "name": "MyBatis", "level": "쿼리 최적화", "pct": 70, "color": "linear-gradient(90deg,#c97e5e,#d4a73e)" },
-    { "type": "group", "label": "🗄️ Database" },
-    { "type": "skill", "name": "MySQL", "level": "쿼리 최적화", "pct": 70, "color": "linear-gradient(90deg,#8a9a5b,#c97e5e)" },
-    { "type": "skill", "name": "PostgreSQL / PostGIS", "level": "공간 인덱싱", "pct": 65, "color": "linear-gradient(90deg,#8a9a5b,#c97e5e)" },
-    { "type": "skill", "name": "Flyway", "level": "스키마 형상 관리", "pct": 65, "color": "linear-gradient(90deg,#8a9a5b,#c97e5e)" },
-    { "type": "group", "label": "📊 Observability" },
-    { "type": "skill", "name": "Prometheus", "level": "메트릭 수집", "pct": 55, "color": "linear-gradient(90deg,#e6bf60,#c97e5e)" },
-    { "type": "skill", "name": "Grafana", "level": "대시보드 구축", "pct": 55, "color": "linear-gradient(90deg,#e6bf60,#c97e5e)" },
-    { "type": "skill", "name": "AWS CloudWatch", "level": "로그/알람", "pct": 60, "color": "linear-gradient(90deg,#e6bf60,#c97e5e)" }
+    {
+      "type": "group",
+      "label": "☁️ Cloud / Infrastructure"
+    },
+    {
+      "type": "skill",
+      "name": "AWS",
+      "level": "구조 설계 · 운영",
+      "pct": 75,
+      "color": "linear-gradient(90deg,#d4a73e,#e6bf60)"
+    },
+    {
+      "type": "skill",
+      "name": "Terraform",
+      "level": "IaC 주도 설계",
+      "pct": 75,
+      "color": "linear-gradient(90deg,#d4a73e,#e6bf60)"
+    },
+    {
+      "type": "skill",
+      "name": "Atlantis",
+      "level": "GitOps 적용",
+      "pct": 65,
+      "color": "linear-gradient(90deg,#d4a73e,#e6bf60)"
+    },
+    {
+      "type": "skill",
+      "name": "Docker",
+      "level": "컨테이너 운영",
+      "pct": 60,
+      "color": "linear-gradient(90deg,#d4a73e,#e6bf60)"
+    },
+    {
+      "type": "group",
+      "label": "🔄 CI/CD · DevSecOps"
+    },
+    {
+      "type": "skill",
+      "name": "GitHub Actions",
+      "level": "파이프라인 구축",
+      "pct": 80,
+      "color": "linear-gradient(90deg,#8a9a5b,#d4a73e)"
+    },
+    {
+      "type": "skill",
+      "name": "Jenkins",
+      "level": "Blue/Green 배포",
+      "pct": 70,
+      "color": "linear-gradient(90deg,#8a9a5b,#d4a73e)"
+    },
+    {
+      "type": "skill",
+      "name": "AWS CodeBuild",
+      "level": "빌드 자동화",
+      "pct": 65,
+      "color": "linear-gradient(90deg,#8a9a5b,#d4a73e)"
+    },
+    {
+      "type": "skill",
+      "name": "GitGuardian / SOPS",
+      "level": "시크릿 보안",
+      "pct": 70,
+      "color": "linear-gradient(90deg,#8a9a5b,#d4a73e)"
+    },
+    {
+      "type": "group",
+      "label": "💻 Backend"
+    },
+    {
+      "type": "skill",
+      "name": "Java / Spring Boot",
+      "level": "REST API 설계",
+      "pct": 70,
+      "color": "linear-gradient(90deg,#c97e5e,#d4a73e)"
+    },
+    {
+      "type": "skill",
+      "name": "Spring Scheduler",
+      "level": "배치 처리",
+      "pct": 65,
+      "color": "linear-gradient(90deg,#c97e5e,#d4a73e)"
+    },
+    {
+      "type": "skill",
+      "name": "MyBatis",
+      "level": "쿼리 최적화",
+      "pct": 70,
+      "color": "linear-gradient(90deg,#c97e5e,#d4a73e)"
+    },
+    {
+      "type": "group",
+      "label": "🗄️ Database"
+    },
+    {
+      "type": "skill",
+      "name": "MySQL",
+      "level": "쿼리 최적화",
+      "pct": 70,
+      "color": "linear-gradient(90deg,#8a9a5b,#c97e5e)"
+    },
+    {
+      "type": "skill",
+      "name": "PostgreSQL / PostGIS",
+      "level": "공간 인덱싱",
+      "pct": 65,
+      "color": "linear-gradient(90deg,#8a9a5b,#c97e5e)"
+    },
+    {
+      "type": "skill",
+      "name": "Flyway",
+      "level": "스키마 형상 관리",
+      "pct": 65,
+      "color": "linear-gradient(90deg,#8a9a5b,#c97e5e)"
+    },
+    {
+      "type": "group",
+      "label": "📊 Observability"
+    },
+    {
+      "type": "skill",
+      "name": "Prometheus",
+      "level": "메트릭 수집",
+      "pct": 55,
+      "color": "linear-gradient(90deg,#e6bf60,#c97e5e)"
+    },
+    {
+      "type": "skill",
+      "name": "Grafana",
+      "level": "대시보드 구축",
+      "pct": 55,
+      "color": "linear-gradient(90deg,#e6bf60,#c97e5e)"
+    },
+    {
+      "type": "skill",
+      "name": "AWS CloudWatch",
+      "level": "로그/알람",
+      "pct": 60,
+      "color": "linear-gradient(90deg,#e6bf60,#c97e5e)"
+    }
   ],
   "academia": [
     {
@@ -681,16 +826,70 @@ const DEF = {
     "Survey of THz communication research trends for 6G networks — <em>KICS Fall Conference</em>, Gyeongju, Nov 2023"
   ],
   "certs": [
-    { "icon": "🌩️", "nameKo": "AWS SAA (Solutions Architect — Associate)", "nameEn": "AWS SAA (Solutions Architect — Associate)", "orgKo": "2026.02.13 취득", "orgEn": "Acquired 2026.02.13" },
-    { "icon": "☁️", "nameKo": "AWS CCP (Cloud Practitioner)", "nameEn": "AWS CCP (Cloud Practitioner)", "orgKo": "2025.10.10 취득", "orgEn": "Acquired 2025.10.10" },
-    { "icon": "💻", "nameKo": "정보처리산업기사", "nameEn": "Industrial Engineer Information Processing", "orgKo": "2019.05.22 취득", "orgEn": "Acquired 2019.05.22" },
-    { "icon": "📊", "nameKo": "컴퓨터활용능력 1급", "nameEn": "Computer Specialist Level-1", "orgKo": "2019.05.31 취득", "orgEn": "Acquired 2019.05.31" },
-    { "icon": "🗣️", "nameKo": "OPIc IH", "nameEn": "OPIc IH (English)", "orgKo": "2025.03.24 취득", "orgEn": "Acquired 2025.03.24" }
+    {
+      "icon": "🌩️",
+      "nameKo": "AWS SAA (Solutions Architect — Associate)",
+      "nameEn": "AWS SAA (Solutions Architect — Associate)",
+      "orgKo": "2026.02.13 취득",
+      "orgEn": "Acquired 2026.02.13"
+    },
+    {
+      "icon": "☁️",
+      "nameKo": "AWS CCP (Cloud Practitioner)",
+      "nameEn": "AWS CCP (Cloud Practitioner)",
+      "orgKo": "2025.10.10 취득",
+      "orgEn": "Acquired 2025.10.10"
+    },
+    {
+      "icon": "💻",
+      "nameKo": "정보처리산업기사",
+      "nameEn": "Industrial Engineer Information Processing",
+      "orgKo": "2019.05.22 취득",
+      "orgEn": "Acquired 2019.05.22"
+    },
+    {
+      "icon": "📊",
+      "nameKo": "컴퓨터활용능력 1급",
+      "nameEn": "Computer Specialist Level-1",
+      "orgKo": "2019.05.31 취득",
+      "orgEn": "Acquired 2019.05.31"
+    },
+    {
+      "icon": "🗣️",
+      "nameKo": "OPIc IH",
+      "nameEn": "OPIc IH (English)",
+      "orgKo": "2025.03.24 취득",
+      "orgEn": "Acquired 2025.03.24"
+    }
   ],
   "education": [
-    { "labelKo": "석사", "labelEn": "Master's", "nameKo": "중앙대학교 컴퓨터공학과", "nameEn": "Chung-Ang Univ., Computer Science & Engineering", "period": "2024.03 — 2026.02", "detailKo": "졸업 / GPA 4.26 / 4.5", "detailEn": "Graduated / GPA 4.26 / 4.5" },
-    { "labelKo": "학사", "labelEn": "Bachelor's", "nameKo": "중앙대학교 소프트웨어학부 (편입)", "nameEn": "Chung-Ang Univ., Software (Transfer)", "period": "2020.03 — 2024.02", "detailKo": "졸업 / GPA 3.65 / 4.5", "detailEn": "Graduated / GPA 3.65 / 4.5" },
-    { "labelKo": "학사 (편입 전)", "labelEn": "Bachelor's (Pre-transfer)", "nameKo": "학점은행제 컴퓨터공학", "nameEn": "Credit Bank System, Computer Engineering", "period": "2018.03 — 2019.08", "detailKo": "졸업 / GPA 3.91 / 4.5", "detailEn": "Graduated / GPA 3.91 / 4.5" }
+    {
+      "labelKo": "석사",
+      "labelEn": "Master's",
+      "nameKo": "중앙대학교 컴퓨터공학과",
+      "nameEn": "Chung-Ang Univ., Computer Science & Engineering",
+      "period": "2024.03 — 2026.02",
+      "detailKo": "졸업 / GPA 4.26 / 4.5",
+      "detailEn": "Graduated / GPA 4.26 / 4.5"
+    },
+    {
+      "labelKo": "학사",
+      "labelEn": "Bachelor's",
+      "nameKo": "중앙대학교 소프트웨어학부 (편입)",
+      "nameEn": "Chung-Ang Univ., Software (Transfer)",
+      "period": "2020.03 — 2024.02",
+      "detailKo": "졸업 / GPA 3.65 / 4.5",
+      "detailEn": "Graduated / GPA 3.65 / 4.5"
+    },
+    {
+      "labelKo": "학사 (편입 전)",
+      "labelEn": "Bachelor's (Pre-transfer)",
+      "nameKo": "학점은행제 컴퓨터공학",
+      "nameEn": "Credit Bank System, Computer Engineering",
+      "period": "2018.03 — 2019.08",
+      "detailKo": "졸업 / GPA 3.91 / 4.5",
+      "detailEn": "Graduated / GPA 3.91 / 4.5"
+    }
   ],
   "footer": {
     "leftKo": "홍성훈 / Backend / DevOps / Cloud Engineer",
