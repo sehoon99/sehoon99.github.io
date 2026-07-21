@@ -131,7 +131,12 @@ section{padding:56px 0}
 .proj-slides-wrap{position:absolute;inset:0;overflow:hidden}
 .proj-slides{display:flex;width:100%;height:100%;transition:transform .35s ease}
 .proj-slide{flex-shrink:0;width:100%;height:100%}
-.proj-slide img{width:100%;height:100%;object-fit:contain;display:block}
+.proj-slide img{width:100%;height:100%;object-fit:contain;display:block;cursor:zoom-in}
+.img-modal{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.82);display:flex;align-items:center;justify-content:center;padding:32px;opacity:0;pointer-events:none;transition:opacity .2s;cursor:zoom-out}
+.img-modal.open{opacity:1;pointer-events:auto}
+.img-modal img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;box-shadow:0 10px 40px rgba(0,0,0,.5);cursor:default}
+.img-modal-close{position:absolute;top:18px;right:24px;background:rgba(255,255,255,.14);border:none;color:#fff;font-size:26px;line-height:1;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.img-modal-close:hover{background:rgba(255,255,255,.28)}
 .proj-slider-btn{position:absolute;top:50%;transform:translateY(-50%);background:var(--surface);border:1px solid var(--line);color:var(--ink);font-size:18px;width:32px;height:32px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;line-height:1;padding:0;opacity:.92}
 .proj-slider-btn:hover{background:var(--accent);color:#fff}
 .proj-slider-btn.prev{left:8px}
@@ -338,7 +343,7 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 0 40px;posi
   .wrap{max-width:none;padding:0}
   /* 화면 전용 UI 숨김 */
   .site-head,.egg-btn,#egg-page,#admin-page,.project-more,
-  .proj-slider-btn,.proj-slider-dots,.dt-arrow{display:none!important}
+  .proj-slider-btn,.proj-slider-dots,.dt-arrow,.img-modal{display:none!important}
   .hero{padding:0 0 24px}
   section{padding:22px 0}
   h1{font-size:30px}
@@ -1439,7 +1444,7 @@ function applyProjectsToMain(projects,lang){
     const sliderHtml=imgs.length?`
   <div class="proj-slider" data-idx="0">
     <div class="proj-slides-wrap"><div class="proj-slides">
-      ${imgs.map(u=>`<div class="proj-slide"><img src="${eh(u)}" alt="" loading="lazy" onload="sizeSliderFromImg(this)" onerror="this.closest('.proj-slide').style.display='none'"></div>`).join('')}
+      ${imgs.map(u=>`<div class="proj-slide"><img src="${eh(u)}" alt="" loading="lazy" onload="sizeSliderFromImg(this)" onerror="this.closest('.proj-slide').style.display='none'" onclick="event.stopPropagation();openImgModal(this.src)"></div>`).join('')}
     </div></div>
     ${imgs.length>1?`
       <button class="proj-slider-btn prev" onclick="event.stopPropagation();slideProj(this,-1)">&#8249;</button>
@@ -2294,6 +2299,25 @@ document.getElementById('egg-page').classList.remove('active');
 applyTheme(ld('theme',null)||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
 route();
 applyToMain();
+
+function openImgModal(src){
+  let m=document.getElementById('img-modal');
+  if(!m){
+    m=document.createElement('div');m.id='img-modal';m.className='img-modal';
+    m.innerHTML='<button class="img-modal-close" aria-label="닫기" onclick="closeImgModal()">&times;</button><img alt="">';
+    m.addEventListener('click',function(e){if(e.target===m)closeImgModal();});
+    m.querySelector('img').addEventListener('click',function(e){e.stopPropagation();});
+    document.body.appendChild(m);
+  }
+  m.querySelector('img').src=src;
+  requestAnimationFrame(()=>m.classList.add('open'));
+  document.body.style.overflow='hidden';
+}
+function closeImgModal(){
+  const m=document.getElementById('img-modal');if(!m)return;
+  m.classList.remove('open');document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeImgModal();});
 </script>
 
 </body></html>
