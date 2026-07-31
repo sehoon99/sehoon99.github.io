@@ -862,13 +862,13 @@ const DEF = {
       "bulletsKo": [
         "Discord 슬래시 명령 기반 보드게임 룰 안내 챗봇 구현",
         "Ollama + Llama 3.1 8B 연동으로 자체 GPU 기반 LLM 추론 환경 구성",
-        "ChromaDB 벡터 DB와 nomic-embed-text 임베딩 모델을 활용한 룰북 PDF 기반 RAG 파이프라인 설계",
+        "ChromaDB 벡터 DB와 bge-m3 임베딩 모델을 활용한 다국어 룰북 PDF 기반 RAG 파이프라인 설계",
         "AWS EC2 g6.xlarge (NVIDIA L4 GPU) 환경에서 GPU 추론 및 Discord 응답 흐름 검증",
         "Terraform으로 EC2, IAM Role, Security Group, Secrets Manager를 IaC로 관리",
         "AWS Secrets Manager와 최소 권한 IAM 정책으로 Discord Bot Token 보안 관리",
         "Docker 멀티 스테이지 빌드 및 non-root 컨테이너로 배포 환경 표준화",
-        "향후 Prometheus 메트릭으로 질의 수, 응답 지연시간, Ollama 오류 관측",
-        "서버리스 배포 및 RAG 검색 품질 응답 품질 개선 비용 최적화 예정"
+        "CPU, GPU 워크로드 분리 및 이벤트 기반 처리로 비용 최적화",
+        "향후 Prometheus 메트릭으로 질의 수, 응답 지연시간, Ollama 오류 관측"
       ],
       "bulletsEn": [],
       "stack": "Python,  ChromaDB, RAG, Docker, AWS, Terraform, Prometheus, Kubernetes(EKS)",
@@ -1210,6 +1210,26 @@ const DEF = {
               "Combined 10,000+ public data entries with GPT; 80% response time cut via 2-opt TSP optimization (60s → under 10s)",
               "Minimized DB load with in-memory caching; enforced consistent JSON output via prompt engineering"
             ]
+          },
+          {
+            "titleKo": "보드게임 규칙 설명 디스코드 봇 (RAG 기반)",
+            "titleEn": "",
+            "metaKo": "2026.05 - ",
+            "metaEn": "",
+            "subKo": "Python,  ChromaDB, RAG, Docker, AWS, Terraform, Prometheus, Kubernetes(EKS)",
+            "subEn": "",
+            "bulletsKo": [
+              "Discord 슬래시 명령 기반 보드게임 룰 안내 챗봇 구현",
+              "Ollama + Llama 3.1 8B 연동으로 자체 GPU 기반 LLM 추론 환경 구성",
+              "ChromaDB 벡터 DB와 bge-m3 임베딩 모델을 활용한 다국어 룰북 PDF 기반 RAG 파이프라인 설계",
+              "AWS EC2 g6.xlarge (NVIDIA L4 GPU) 환경에서 GPU 추론 및 Discord 응답 흐름 검증",
+              "Terraform으로 EC2, IAM Role, Security Group, Secrets Manager를 IaC로 관리",
+              "AWS Secrets Manager와 최소 권한 IAM 정책으로 Discord Bot Token 보안 관리",
+              "Docker 멀티 스테이지 빌드 및 non-root 컨테이너로 배포 환경 표준화",
+              "CPU, GPU 워크로드 분리 및 이벤트 기반 처리로 비용 최적화",
+              "향후 Prometheus 메트릭으로 질의 수, 응답 지연시간, Ollama 오류 관측"
+            ],
+            "bulletsEn": []
           }
         ]
       },
