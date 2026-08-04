@@ -122,7 +122,7 @@ section{padding:56px 0}
 .detail-section{margin-bottom:22px}
 .ach-list{list-style:none}
 .ach-list li{position:relative;padding:4px 0 4px 18px;font-size:14.5px;color:var(--sub);line-height:1.8}
-.ach-list li::before{content:'–';position:absolute;left:0;color:var(--accent)}
+.ach-list li::before{content:'-';position:absolute;left:0;color:var(--accent)}
 
 /* 프로젝트 이미지 슬라이더 */
 .proj-slider{position:relative;width:100%;max-width:640px;margin:4px 0 24px;border-radius:6px;overflow:hidden;background:var(--surface2);border:1px solid var(--line);line-height:0}
@@ -245,7 +245,7 @@ body.cv-mode #cv-page{display:block}
 .cv-item-sub{font-size:13px;color:var(--sub);margin-top:2px}
 .cv-bullets{list-style:none;margin-top:8px}
 .cv-bullets li{position:relative;padding:2px 0 2px 16px;font-size:13.5px;color:var(--sub);line-height:1.75}
-.cv-bullets li::before{content:'–';position:absolute;left:0;color:var(--accent)}
+.cv-bullets li::before{content:'-';position:absolute;left:0;color:var(--accent)}
 
 /* ============================================================
    9. 푸터 + 숨겨진 관리자 진입 버튼
@@ -394,7 +394,7 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 0 40px;posi
   <div class="wrap head-inner">
     <a class="brand" href="#top">HSH<span style="color:var(--accent)">.</span>dev</a>
     <nav class="head-nav">
-      <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#academia">Academia</a><a href="#certs">Credentials</a><a href="#cv" style="font-weight:700;color:var(--accent)">CV</a>
+      <a href="#about">About</a><a href="#projects">Projects</a><a href="#activities">Activities</a><a href="#skills">Skills</a><a href="#academia">Academia</a><a href="#certs">Credentials</a><a href="#cv" style="font-weight:700;color:var(--accent)">CV</a>
     </nav>
     <div class="lang-switch">
       <button class="lang-btn active" onclick="setLang('ko')" id="btn-ko">KO</button>
@@ -428,15 +428,21 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 0 40px;posi
     <div id="proj-list-main"></div>
   </section>
 
+  <!-- ===== 활동 및 학습 ===== -->
+  <section id="activities">
+    <div class="sec-head"><span class="sec-num">02</span><span class="sec-title" id="lbl-activities-title">활동 및 학습</span></div>
+    <div id="activity-list-main"></div>
+  </section>
+
   <!-- ===== 기술 스택 ===== -->
   <section id="skills">
-    <div class="sec-head"><span class="sec-num">02</span><span class="sec-title" id="lbl-skills-title">기술 스택</span></div>
+    <div class="sec-head"><span class="sec-num">03</span><span class="sec-title" id="lbl-skills-title">기술 스택</span></div>
     <div class="skills-grid" id="skills-grid"></div>
   </section>
 
   <!-- ===== 학술 성과 ===== -->
   <section id="academia">
-    <div class="sec-head"><span class="sec-num">03</span><span class="sec-title" id="lbl-academia-title">학술 성과</span></div>
+    <div class="sec-head"><span class="sec-num">04</span><span class="sec-title" id="lbl-academia-title">학술 성과</span></div>
     <div id="academia-cards-container"></div>
     <button class="domestic-toggle" onclick="toggleDomestic(this)"><span class="dt-arrow">▶</span><span id="domestic-label"></span></button>
     <div class="domestic-papers" id="domestic-list">
@@ -446,7 +452,7 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 0 40px;posi
 
   <!-- ===== 자격증 · 학력 ===== -->
   <section id="certs">
-    <div class="sec-head"><span class="sec-num">04</span><span class="sec-title" id="lbl-certs-title">자격증 및 학력</span></div>
+    <div class="sec-head"><span class="sec-num">05</span><span class="sec-title" id="lbl-certs-title">자격증 및 학력</span></div>
     <div class="cred-sub" id="lbl-certs-sub">Certificates</div>
     <div id="main-certs-grid"></div>
     <div class="cred-sub" id="lbl-edu-sub">Education</div>
@@ -595,6 +601,12 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding:32px 0 40px;posi
     </div>
 
     <div class="admin-section">
+      <div class="admin-section-title">활동 및 학습</div>
+      <div id="a-act-list" style="display:flex;flex-direction:column;gap:14px"></div>
+      <div style="margin-top:12px"><button class="abtn abtn-ghost" style="font-size:12px;padding:8px 16px" onclick="addActivity()">+ 활동 추가</button></div>
+    </div>
+
+    <div class="admin-section">
       <div class="admin-section-title">기술 스택</div>
       <div id="a-skill-list" style="display:flex;flex-direction:column;gap:12px"></div>
       <div style="margin-top:12px;display:flex;gap:10px">
@@ -687,13 +699,13 @@ const DEF = {
   },
   "nameKo": "홍성훈",
   "nameSub": "Hong Seong Hun",
-  "birthday": "1999.08.17",
+  "birthday": "",
   "heroTagKo": "Backend / DevOps / Cloud Engineer / FDE · 신입",
   "heroTagEn": "Backend / DevOps / Cloud Engineer / FDE · Entry-level",
   "heroHighlightKo": "1저자 SCI 논문 보유",
   "heroHighlightEn": "1st-Author SCI Publication",
   "aboutKo": "<img src=\"image/profile.jpg\" alt=\"프로필 사진\" class=\"about-photo\">중앙대학교 컴퓨터공학 석사 과정에서 <strong>네트워크 시스템과 지능형 통신 아키텍처</strong>를 연구했습니다. 효율적인 데이터 전송과 시스템 최적화가 차세대 네트워크의 신뢰성과 확장성을 어떻게 높이는지를 학문적으로 깊이 탐구해온 이 배경은, 자연스럽게 <strong>클라우드 인프라 설계</strong>에 대한 관심으로 이어졌습니다.<br><br>현재는 <strong>AWS, Terraform, Docker</strong> 등을 활용한 클라우드 인프라 설계와 시스템 아키텍처 원칙을 학습하며, 확장 가능하고 비용 효율적인 솔루션을 직접 구현하고 있습니다.<div class=\"about-links\"><a href=\"mailto:sehoon99@naver.com\">sehoon99@naver.com</a><a href=\"https://www.github.com/sehoon99\">GitHub</a><a href=\"https://bright-huny.tistory.com\">Blog</a><a href=\"https://www.linkedin.com/in/seonghun-hong-0928ba238\">LinkedIn</a></div>",
-  "aboutEn": "<img src=\"image/profile.jpg\" alt=\"Profile\" class=\"about-photo\">I completed my Master's degree in Computer Science at Chung-Ang University, where I researched <strong>network systems and intelligent communication architectures</strong>. My academic background in efficient data transmission and system optimization naturally led me toward <strong>cloud infrastructure design</strong>.<br><br>I am now building scalable, cost-efficient solutions using <strong>AWS, Terraform, and Docker</strong>, bridging my research background with practical cloud engineering.<div class=\"about-links\"><a href=\"mailto:sehoon99@naver.com\">sehoon99@naver.com</a><a href=\"https://www.github.com/sehoon99\">GitHub</a><a href=\"https://bright-huny.tistory.com\">Blog</a><a href=\"https://www.linkedin.com/in/seonghun-hong-0928ba238\">LinkedIn</a></div>",
+  "aboutEn": "<img src=\"image/profile.jpg\" alt=\"Profile\" class=\"about-photo\">During my Master's in Computer Science &amp; Engineering at Chung-Ang University, I researched <strong>network systems and intelligent communication architectures</strong>. Deeply exploring how efficient data transmission and system optimization raise the reliability and scalability of next-generation networks naturally led me toward an interest in <strong>cloud infrastructure design</strong>.<br><br>I am now studying cloud infrastructure design and system architecture principles with <strong>AWS, Terraform, and Docker</strong>, implementing scalable and cost-efficient solutions myself.<div class=\"about-links\"><a href=\"mailto:sehoon99@naver.com\">sehoon99@naver.com</a><a href=\"https://www.github.com/sehoon99\">GitHub</a><a href=\"https://bright-huny.tistory.com\">Blog</a><a href=\"https://www.linkedin.com/in/seonghun-hong-0928ba238\">LinkedIn</a></div>",
   "metricsKo": [
     {
       "num": "80%",
@@ -738,27 +750,29 @@ const DEF = {
       "period": "2025.12 - 2026.01",
       "link": "https://github.com/sehoon99/cine-catch",
       "descKo": "영화관별 한정판 굿즈 재고를 실시간 크롤링하고, 사용자 위치 기반으로 가장 가까운 보유 매장을 안내하는 서비스. Terraform IaC 기반 인프라 자동화와 DevSecOps CI/CD 파이프라인 구축을 주도.",
-      "descEn": "A real-time service that crawls limited-edition goods inventory across cinema chains and recommends the nearest store based on user location. Led Terraform IaC infrastructure automation and DevSecOps CI/CD pipeline.",
+      "descEn": "A service that crawls limited-edition goods inventory per cinema in real time and guides users to the nearest store holding the item, based on their location. Led Terraform IaC infrastructure automation and the DevSecOps CI/CD pipeline.",
       "tags": "Terraform, Atlantis, AWS, GitHub Actions, GitGuardian, Spring Boot, PostgreSQL(PostGIS), Flyway, Playwright",
       "bulletsKo": [
         "Playwright 기반 크롤러로 CGV사의 동적 렌더링 굿즈 재고 데이터 자동 수집 및 DB 적재",
         "PostGIS 공간 인덱싱으로 사용자 위경도 기반 실시간 최근접 매장 탐색",
         "Terraform IaC로 VPC, RDS, S3, CloudFront 등 AWS 전체 인프라를 코드화 - 환경 재현성 확보",
-        "GithubActions를 통한 CI/CD 구축",
+        "Atlantis 기반 GitOps로 PR 단위 terraform plan/apply 자동화 - 인프라 변경 사항을 코드 리뷰 단계에서 사전 검증",
+        "GitHub Actions를 통한 CI/CD 구축",
         "SOPS, KMS, SSM 연동 보안 관리",
         "GitGuardian을 CI/CD에 연동하여 소스코드 내 민감 정보 유출 원천 차단",
         "CloudFront CDN으로 정적 에셋 배포 - 서버 부하 분산 및 응답속도 향상",
         "Flyway로 DB 스키마 버전 관리 - 마이그레이션 이력 추적 자동화"
       ],
       "bulletsEn": [
-        "Automated real-time crawling of goods inventory from CGV using Playwright",
-        "PostGIS spatial indexing for real-time nearest store search based on user coordinates",
-        "Codified all AWS infrastructure (VPC, RDS, S3, CloudFront) with Terraform IaC",
-        "Building CI/CD with GithubActions",
-        "SOPS, KMS and SSM Casting Security Management",
-        "Integrated GitGuardian into CI/CD to block secret leaks; GitHub Secrets for secure injection",
-        "Deployed static assets via CloudFront CDN to reduce server load",
-        "Automated DB schema versioning and migration history with Flyway"
+        "Automatically collected and stored CGV's dynamically rendered goods inventory data using a Playwright-based crawler",
+        "Real-time nearest-store search from the user's latitude and longitude using PostGIS spatial indexing",
+        "Codified all AWS infrastructure including VPC, RDS, S3, and CloudFront with Terraform IaC - securing environment reproducibility",
+        "Automated per-PR terraform plan/apply through Atlantis-based GitOps - reviewing infrastructure changes before they are applied",
+        "Built CI/CD with GitHub Actions",
+        "Security management through SOPS, KMS, and SSM integration",
+        "Integrated GitGuardian into CI/CD to block secret leaks in source code at the root",
+        "Delivered static assets via CloudFront CDN - distributing server load and improving response time",
+        "Managed DB schema versions with Flyway - automated migration history tracking"
       ],
       "stack": "Terraform, Atlantis, AWS, GitHub Actions, GitGuardian, Spring Boot, PostgreSQL(PostGIS), Flyway, Playwright",
       "images": [
@@ -776,19 +790,19 @@ const DEF = {
       "period": "2023.03 - 2023.06",
       "link": "https://github.com/sehoon99/The_Simplest_Trip_Planner",
       "descKo": "공공데이터 1만 건 이상과 GPT 추론 능력을 결합해 동선 최적화된 맞춤형 여행 일정을 생성하는 서비스. TSP 최적화로 응답시간 80% 단축.",
-      "descEn": "A service combining 10,000+ public data entries with GPT to generate optimized travel itineraries. Reduced response time by 80% via genetic algorithm-based TSP optimization.",
+      "descEn": "A service that combines over 10,000 public data entries with GPT's reasoning to generate personalized, route-optimized travel itineraries. Cut response time by 80% with 2-opt TSP optimization.",
       "tags": "AWS, Spring Boot, OracleDB, MyBatis, OpenAI API",
       "bulletsKo": [
-        "공공데이터 1만 건 이상 수집 후 MyBatis로 MySQL 적재 - SQL 직접 제어로 조회 성능 최적화",
+        "공공데이터 1만 건 이상 수집 후 MyBatis로 OracleDB 적재 - SQL 직접 제어로 조회 성능 최적화",
         "Prompt Engineering으로 GPT에 사용자 취향 전달 및 일관된 JSON 응답 유도",
         "2-opt 적용 - 응답시간 80% 단축 (3박 4일 일정 기준 60초 → 10초 이하)",
         "자주 조회되는 관광지 데이터 인메모리 캐싱으로 DB 부하 최소화"
       ],
       "bulletsEn": [
-        "Collected 10,000+ public tourism records and loaded into MySQL via MyBatis with optimized SQL",
-        "Designed prompts to deliver user preferences to GPT and enforce consistent JSON output",
-        "Applied 2-opt for TSP - 80% response time reduction (60s → under 10s based on a 3-night, 4-day trip)",
-        "In-memory caching for frequently accessed attraction data to minimize DB load"
+        "Collected over 10,000 public data entries and loaded them into OracleDB via MyBatis - optimized query performance through direct SQL control",
+        "Delivered user preferences to GPT through prompt engineering and enforced consistent JSON responses",
+        "Applied 2-opt - 80% response time reduction (60s to under 10s for a 3-night, 4-day itinerary)",
+        "Minimized DB load with in-memory caching of frequently queried attraction data"
       ],
       "stack": "AWS, Spring Boot, OracleDB, MyBatis, OpenAI API",
       "images": [
@@ -798,33 +812,33 @@ const DEF = {
     {
       "icon": "📰",
       "nameKo": "AI-News Tracker - AI 이미지 활용 뉴스 트렌드 분석 구독 시스템",
-      "nameEn": "AI-News Tracker - News use AI gen images Trend Analysis & Subscription",
+      "nameEn": "AI-News Tracker - News Trend Analysis & Subscription with AI-Generated Image Detection",
       "period": "2026.02 - 2026.03",
       "link": "https://github.com/sehoon99/ainews",
       "descKo": "매일 AI 뉴스를 자동 수집해 키워드 트렌드를 시각화하고, 관심 키워드 상승률을 이메일로 자동 리포팅하는 서비스. Spot Instance + ECS 조합으로 인프라 비용 50% 이상 절감.",
-      "descEn": "Automatically collects AI news daily, visualizes keyword trends, and sends personalized email reports on keyword rise rates. Reduced infra costs by 50% using Spot Instance + ECS.",
-      "tags": "Terraform, Jenkins, AWS, GitGuardian, Prometheus, Grafana, Docker, Spring Boot, MySQL, Flyway, D3.js",
+      "descEn": "A service that automatically collects AI news every day, visualizes keyword trends, and emails automated reports on the rise rate of keywords the user follows. Cut infrastructure cost by over 50% with a Spot Instance and ECS combination.",
+      "tags": "Terraform, Jenkins, CodeBuild, AWS, GitGuardian, Prometheus, Grafana, Docker, Spring Boot, MySQL, Flyway, D3.js",
       "bulletsKo": [
         "EventBridge 스케줄러로 매시간 Lambda 크롤러 실행 - AI 뉴스 자동 수집 및 RDS 적재 파이프라인 구축",
         "Daily Batch로 키워드별 빈도 집계 - 실시간 집계 대신 통계 테이블 참조로 API 응답속도 및 DB 부하 개선",
         "D3.js 버블 차트로 상위 50개 키워드 시각화 / AWS SES로 급상승 키워드 이메일 자동 발송",
         "AWS Lambda로 AI 이미지 판별 로직 분리 - 이벤트 기반으로 서버 자원 효율화",
-        "Jenkins를 통한 CI/CD 구축, Blue/Green 배포",
+        "Jenkins 오케스트레이션 + CodeBuild 빌드로 CI/CD 구축, Blue/Green 배포",
         "SOPS, KMS, SSM 연동 보안 관리",
         "CloudFront CDN으로 정적 에셋 배포 - 서버 부하 분산 및 응답속도 향상",
         "Spot Instance + ECS + ASG 조합으로 비용 50% 이상 절감 / Prometheus + Grafana로 실시간 모니터링"
       ],
       "bulletsEn": [
-        "Run Hourly Crawler with EventBridge Scheduler - Build AI News Automated Collection and RDS Loading Pipeline",
-        "Daily Batch keyword frequency aggregation - improved API response speed by referencing stats table instead of real-time counting",
-        "D3.js bubble chart for top 50 keyword visualization / AWS SES for automated keyword trend email reports",
-        "Separated AI image classification logic to AWS Lambda - event-driven resource efficiency",
-        "Build CI/CD for Jenkins, Blue/Green Deployment",
-        "SOPS, KMS and SSM Casting Security Management",
-        "Deploy Static Assets with CloudFront CDN - Improve Server Distribution and Response Speed",
-        "50% cost reduction via Spot Instance + ECS + ASG / Real-time monitoring with Prometheus + Grafana"
+        "Ran an hourly Lambda crawler via EventBridge Scheduler - built an automated AI news collection and RDS loading pipeline",
+        "Aggregated keyword frequency with a daily batch - improved API response time and DB load by referencing a stats table instead of counting in real time",
+        "Visualized the top 50 keywords with a D3.js bubble chart / automated email delivery of surging keywords via AWS SES",
+        "Separated AI-generated image detection logic into AWS Lambda - improved server resource efficiency through event-driven processing",
+        "Built CI/CD with Jenkins orchestration and CodeBuild builds, with Blue/Green deployment",
+        "Security management through SOPS, KMS, and SSM integration",
+        "Delivered static assets via CloudFront CDN - distributing server load and improving response time",
+        "Over 50% cost reduction with a Spot Instance + ECS + ASG combination / real-time monitoring with Prometheus + Grafana"
       ],
-      "stack": "Terraform, Jenkins, AWS, GitGuardian, Prometheus, Grafana, Docker, Spring Boot, MySQL, Flyway, D3.js",
+      "stack": "Terraform, Jenkins, CodeBuild, AWS, GitGuardian, Prometheus, Grafana, Docker, Spring Boot, MySQL, Flyway, D3.js",
       "images": [
         "https://sehoon99.github.io/image/ai-news-1.png",
         "https://sehoon99.github.io/image/ai-news-2.png"
@@ -834,44 +848,58 @@ const DEF = {
       "icon": "📡",
       "nameKo": "Open RAN - Docker 기반 가상 5G 코어망",
       "nameEn": "Open RAN - Virtual 5G Core Network on Docker",
-      "period": "2025.08-2025.11",
+      "period": "2025.08 - 2025.11",
       "link": "https://github.com/sehoon99/OrchestrAN",
       "descKo": "Docker 컨테이너 기반으로 가상화된 OpenRAN 5G 코어 네트워크를 직접 구축하고, 더미 데이터를 통한 부하 테스트 및 Prometheus 기반 실시간 모니터링 환경을 구성.",
-      "descEn": "Built a virtualized OpenRAN 5G core network on Docker containers, conducted load testing with dummy data, and set up a real-time monitoring environment with Prometheus.",
-      "tags": "Docker, OpenRAN, 5G Core, Prometheus,grafana, Linux,  SRSRan",
+      "descEn": "Built a virtualized OpenRAN 5G core network on Docker containers, ran load tests with dummy data, and set up a real-time monitoring environment based on Prometheus.",
+      "tags": "Docker, OpenRAN, 5G Core, srsRAN, Prometheus, Grafana, Linux",
       "bulletsKo": [
         "DU, CU, RU, 코어망을 각각 Docker 컨테이너로 분리 가상화 - 컴포넌트 간 통신 흐름 직접 테스트",
         "더미 데이터로 네트워크 부하 시뮬레이션 / Prometheus로 컨테이너별 자원 사용량 실시간 수집"
       ],
       "bulletsEn": [
-        "Containerized DU, CU, RU, and core network separately on Docker - tested inter-component communication",
-        "Network load simulation with dummy data / Prometheus metrics collection per container"
+        "Virtualized DU, CU, RU, and the core network as separate Docker containers - directly tested the communication flow between components",
+        "Simulated network load with dummy data / collected per-container resource usage in real time with Prometheus"
       ],
-      "stack": "Docker, OpenRAN, 5G Core, Prometheus,grafana, Linux,  SRSRan",
+      "stack": "Docker, OpenRAN, 5G Core, srsRAN, Prometheus, Grafana, Linux",
       "images": []
     },
     {
       "icon": "🎲",
       "nameKo": "보드게임 규칙 설명 디스코드 봇 (RAG 기반)",
-      "nameEn": "",
+      "nameEn": "Board Game Rules Discord Bot (RAG-based)",
       "period": "2026.05 -",
       "link": "https://d2dx1b6c29cpkg.cloudfront.net/index.html",
-      "descKo": "",
-      "descEn": "",
-      "tags": "Python, ChromaDB, RAG, Docker, AWS, Terraform, Prometheus",
+      "descKo": "영어 · 일본어 · 독일어 룰북 PDF를 RAG로 색인해, Discord 슬래시 명령으로 보드게임 규칙을 출처 페이지와 함께 안내하는 챗봇. CPU 봇과 GPU 워커를 SQS로 분리하고 유휴 시 GPU를 scale-to-zero로 내려 비용을 최적화.",
+      "descEn": "A chatbot that indexes English, Japanese, and German rulebook PDFs with RAG and answers board game rules through Discord slash commands, citing the source page. Separated the CPU bot from the GPU worker with SQS and scaled the GPU to zero when idle to optimize cost.",
+      "tags": "Python, ChromaDB, RAG, Docker, Terraform, AWS",
       "bulletsKo": [
         "Discord 슬래시 명령 기반 보드게임 룰 안내 챗봇 구현",
         "Ollama + Llama 3.1 8B 연동으로 자체 GPU 기반 LLM 추론 환경 구성",
         "ChromaDB 벡터 DB와 bge-m3 임베딩 모델을 활용한 다국어 룰북 PDF 기반 RAG 파이프라인 설계",
         "AWS EC2 g6.xlarge (NVIDIA L4 GPU) 환경에서 GPU 추론 및 Discord 응답 흐름 검증",
+        "CPU 봇 EC2와 GPU 워커 EC2를 분리하고 SQS 큐로 연결 - 장애 격리 및 요청 손실 방지",
+        "무요청 구간에서 GPU를 scale-to-zero로 내리고 Lambda + EC2 Auto Scaling으로 0에서 1 복귀, Spot Instance 적용으로 비용 최적화",
+        "DynamoDB로 작업 상태(QUEUED에서 ANSWERED) 관리, ECR 이미지 digest 고정으로 배포 재현성 확보",
         "Terraform으로 EC2, IAM Role, Security Group, Secrets Manager를 IaC로 관리",
         "AWS Secrets Manager와 최소 권한 IAM 정책으로 Discord Bot Token 보안 관리",
         "Docker 멀티 스테이지 빌드 및 non-root 컨테이너로 배포 환경 표준화",
-        "CPU, GPU 워크로드 분리 및 이벤트 기반 처리로 비용 최적화",
         "향후 Prometheus 메트릭으로 질의 수, 응답 지연시간, Ollama 오류 관측"
       ],
-      "bulletsEn": [],
-      "stack": "Python, ChromaDB, RAG, Docker, AWS, Terraform, Prometheus",
+      "bulletsEn": [
+        "Built a board game rules chatbot driven by Discord slash commands",
+        "Set up a self-hosted GPU-based LLM inference environment with Ollama and Llama 3.1 8B",
+        "Designed a multilingual rulebook PDF RAG pipeline using the ChromaDB vector store and the bge-m3 embedding model",
+        "Verified GPU inference and the Discord response flow on AWS EC2 g6.xlarge (NVIDIA L4 GPU)",
+        "Separated the CPU bot EC2 from the GPU worker EC2 and connected them through SQS queues - fault isolation and no lost requests",
+        "Scaled the GPU down to zero during idle periods and back from zero to one with Lambda and EC2 Auto Scaling, using Spot Instances for cost optimization",
+        "Managed job state (QUEUED to ANSWERED) in DynamoDB and pinned ECR image digests for reproducible deployments",
+        "Managed EC2, IAM roles, security groups, and Secrets Manager as code with Terraform",
+        "Secured the Discord bot token with AWS Secrets Manager and least-privilege IAM policies",
+        "Standardized the deployment environment with multi-stage Docker builds and non-root containers",
+        "Planned - observe query volume, response latency, and Ollama errors through Prometheus metrics"
+      ],
+      "stack": "Python, ChromaDB, RAG, Docker, Terraform, AWS",
       "images": [
         "https://sehoon99.github.io/image/board-1.png"
       ]
@@ -884,7 +912,7 @@ const DEF = {
       "period": "2026.06 -",
       "link": "https://d2rvymtlbhtden.cloudfront.net/",
       "img": "https://opengraph.githubassets.com/1/sehoon99/final_casino",
-      "tags": "TypeScript, Docker Compose, Playwright, GitHub Actions",
+      "tags": "TypeScript, Playwright, GitHub Actions",
       "descKo": "Serverless로 구성된 파티 게임",
       "descEn": ""
     },
@@ -998,14 +1026,14 @@ const DEF = {
     },
     {
       "icon": "🎓",
-      "titleKo": "SCI Paper - 1저자",
-      "titleEn": " SCI Paper - Main author",
-      "subKo": "시맨틱 통신에서 이미지의 피쳐별 중요도 인식 전송 및 채널 할당 제어 / 의미 효율성 최대 73.3% 향상",
-      "subEn": "Image Feature Importance-Aware, Transmission, and Channel Allocation Control in Semantic Communication / Up to 73.3% Improvement in Semantic Efficiency",
-      "metaKo": "",
-      "metaEn": "",
-      "pillKo": "논문",
-      "pillEn": "Paper"
+      "titleKo": "SCI 논문 1저자 - ICT Express",
+      "titleEn": "1st-Author SCI Paper - ICT Express",
+      "subKo": "Feature-importance-aware transmission control in semantic communications / 피쳐 중요도 가중 의미 스펙트럼 효율(wSSE) 지표 제안, 피쳐 선택과 서브채널 할당 최적화로 의미 효율성 최대 73.3% 향상",
+      "subEn": "Feature-importance-aware transmission control in semantic communications / Proposed importance-weighted semantic spectral efficiency (wSSE), up to 73.3% higher semantic efficiency through feature selection and subchannel allocation",
+      "metaKo": "ICT Express (Elsevier), 2025 · DOI 10.1016/j.icte.2025.11.007",
+      "metaEn": "ICT Express (Elsevier), 2025 · DOI 10.1016/j.icte.2025.11.007",
+      "pillKo": "SCI 논문",
+      "pillEn": "SCI Paper"
     },
     {
       "icon": "🌏",
@@ -1136,8 +1164,8 @@ const DEF = {
     "roleKo": "Backend / DevOps / Cloud Engineer / FDE · 신입",
     "roleEn": "Backend / DevOps / Cloud Engineer / FDE · Entry-level",
     "contact": "<a href=\"mailto:sehoon99@naver.com\">sehoon99@naver.com</a><a href=\"https://www.github.com/sehoon99\">github.com/sehoon99</a><a href=\"https://bright-huny.tistory.com\">Blog</a><a href=\"https://www.linkedin.com/in/seonghun-hong-0928ba238\">LinkedIn</a>",
-    "summaryKo": "인프라를 기획부터 배포, 운영까지 혼자 책임져본 신입 DevOps 엔지니어입니다. 클라우드 인프라를 Terraform IaC로 재현 가능하게 구성하고, GitHub Actions로 배포 자동화 파이프라인을 구축하며, Prometheus/Grafana 기반의 관측성을 초기 단계부터 확보합니다. 서버리스와 Spot, scale-to-zero, SQS 기반 이벤트 아키텍처를 활용해 운영 비용을 50% 이상 절감하는 등 비용 효율을 극대화하는 관점으로 인프라를 운영합니다. 도구는 유행이 아닌 문제의 규모와 맥락에 맞춰 선택하며, 불필요한 복잡성을 배제한 적정 엔지니어링을 지향합니다. 중앙대학교에서 통신 네트워크를 연구해 SCI 1저자 논문을 게재하고, 2저자로 참여한 논문에서 ICAIIC 2026 우수논문상을 받았습니다. 경험들을 통해 AWS SAA를 취득하여 빠르게 학습하고 근본 원리까지 파고드는 강점을 갖췄습니다.",
-    "summaryEn": "Entry-level DevOps engineer who has independently owned infrastructure end to end, from design through deployment and operations. Builds reproducible cloud infrastructure with Terraform IaC, establishes automated CI/CD pipelines with GitHub Actions, and bakes in observability from the outset with Prometheus/Grafana. Drives cost efficiency as a core principle, cutting operating costs by over 50% through serverless, Spot instances, scale-to-zero, and SQS-based event-driven architecture. Selects tools based on the scale and context of each problem rather than trends, favoring pragmatic engineering that avoids unnecessary complexity. Researched communication networks at Chung-Ang University, publishing a first-author SCI paper and, as second author on a separate paper, receiving the ICAIIC 2026 Excellent Paper Award. Through this experience, earned AWS SAA certification, paired with a strength for rapid learning and reasoning from first principles.",
+    "summaryKo": "인프라를 기획부터 배포, 운영까지 혼자 책임져본 신입 DevOps 엔지니어입니다. 클라우드 인프라를 Terraform IaC로 재현 가능하게 구성하고, GitHub Actions로 배포 자동화 파이프라인을 구축하며, Prometheus/Grafana 기반의 관측성을 초기 단계부터 확보합니다. 서버리스와 Spot, scale-to-zero, SQS 기반 이벤트 아키텍처를 활용해 운영 비용을 50% 이상 절감하는 등 비용 효율을 극대화하는 관점으로 인프라를 운영합니다. 도구는 유행이 아닌 문제의 규모와 맥락에 맞춰 선택하며, 불필요한 복잡성을 배제한 적정 엔지니어링을 지향합니다. 중앙대학교에서 통신 네트워크를 연구해 SCI 저널 ICT Express에 1저자 논문을 게재하고, 2저자로 참여한 논문에서 ICAIIC 2026 우수논문상을 받았습니다. 경험들을 통해 AWS SAA를 취득하여 빠르게 학습하고 근본 원리까지 파고드는 강점을 갖췄습니다.",
+    "summaryEn": "Entry-level DevOps engineer who has independently owned infrastructure end to end, from design through deployment and operations. Builds reproducible cloud infrastructure with Terraform IaC, establishes automated CI/CD pipelines with GitHub Actions, and bakes in observability from the outset with Prometheus/Grafana. Drives cost efficiency as a core principle, cutting operating costs by over 50% through serverless, Spot instances, scale-to-zero, and SQS-based event-driven architecture. Selects tools based on the scale and context of each problem rather than trends, favoring pragmatic engineering that avoids unnecessary complexity. Researched communication networks at Chung-Ang University, publishing a first-author SCI paper in ICT Express and, as second author on a separate paper, receiving the ICAIIC 2026 Excellent Paper Award. Through this experience, earned AWS SAA certification, paired with a strength for rapid learning and reasoning from first principles.",
     "sections": [
       {
         "headingKo": "프로젝트 경험",
@@ -1148,17 +1176,17 @@ const DEF = {
             "titleEn": "Cine-Catch - Real-time Cinema Goods Inventory Service",
             "metaKo": "2025.12 - 2026.01",
             "metaEn": "2025.12 - 2026.01",
-            "subKo": "Terraform, AWS, GitHub Actions, Spring Boot, PostgreSQL(PostGIS)",
-            "subEn": "Terraform, AWS, GitHub Actions, Spring Boot, PostgreSQL(PostGIS)",
+            "subKo": "Terraform, Atlantis(GitOps), AWS, GitHub Actions, GitGuardian, Spring Boot, PostgreSQL(PostGIS), Playwright",
+            "subEn": "Terraform, Atlantis(GitOps), AWS, GitHub Actions, GitGuardian, Spring Boot, PostgreSQL(PostGIS), Playwright",
             "bulletsKo": [
               "Terraform IaC로 VPC · RDS · S3 · CloudFront 등 AWS 전체 인프라 코드화 - 환경 재현성 확보",
-              "GitHub Actions CI/CD 구축, GitGuardian 연동으로 시크릿 유출 원천 차단, SOPS · KMS · SSM 기반 보안 관리",
+              "Atlantis 기반 GitOps로 PR 단위 plan/apply 자동화, GitHub Actions CI/CD 구축, GitGuardian 연동으로 시크릿 유출 원천 차단",
               "PostGIS 공간 인덱싱으로 사용자 위치 기반 최근접 매장 실시간 탐색, Playwright 크롤러로 재고 자동 수집"
             ],
             "bulletsEn": [
-              "Codified entire AWS infrastructure (VPC, RDS, S3, CloudFront) with Terraform IaC for environment reproducibility",
-              "Built GitHub Actions CI/CD with GitGuardian secret scanning; security management via SOPS, KMS, and SSM",
-              "Real-time nearest-store search with PostGIS spatial indexing; automated inventory crawling with Playwright"
+              "Codified all AWS infrastructure including VPC, RDS, S3, and CloudFront with Terraform IaC - securing environment reproducibility",
+              "Automated per-PR plan/apply through Atlantis-based GitOps, built GitHub Actions CI/CD, and blocked secret leaks at the root with GitGuardian",
+              "Real-time nearest-store search based on user location with PostGIS spatial indexing, automated inventory collection with a Playwright crawler"
             ]
           },
           {
@@ -1166,17 +1194,17 @@ const DEF = {
             "titleEn": "AI-News Tracker - News Trend Analysis & Subscription",
             "metaKo": "2026.02 - 2026.03",
             "metaEn": "2026.02 - 2026.03",
-            "subKo": "Terraform, Jenkins, CodeBuild, AWS, Prometheus, Grafana, Spring Boot, MySQL",
-            "subEn": "Terraform, Jenkins, Codebuild, AWS, Prometheus, Grafana, Spring Boot, MySQL",
+            "subKo": "Terraform, Jenkins, CodeBuild, AWS, Docker, GitGuardian, Prometheus, Grafana, Spring Boot, MySQL",
+            "subEn": "Terraform, Jenkins, CodeBuild, AWS, Docker, GitGuardian, Prometheus, Grafana, Spring Boot, MySQL",
             "bulletsKo": [
               "Spot Instance + ECS + ASG 조합으로 인프라 비용 50% 이상 절감, Prometheus + Grafana 실시간 모니터링",
               "Blue/Green 배포 구축(Jenkins 오케스트레이션 + CodeBuild 빌드), EventBridge + Lambda 기반 뉴스 수집 파이프라인 자동화",
               "Daily Batch 통계 테이블 설계로 API 응답속도 및 DB 부하 개선, AWS SES 이메일 리포팅 자동화"
             ],
             "bulletsEn": [
-              "50% infra cost reduction via Spot Instance + ECS + ASG; real-time monitoring with Prometheus + Grafana",
-              "Blue/Green deployment setup (Jenkins orchestration + CodeBuild setup); automated news collection pipeline with EventBridge + Lambda",
-              "Improved API response and DB load with daily-batch stats tables; automated email reports via AWS SES"
+              "Over 50% infrastructure cost reduction with a Spot Instance + ECS + ASG combination, real-time monitoring with Prometheus and Grafana",
+              "Built Blue/Green deployment (Jenkins orchestration with CodeBuild builds), automated the news collection pipeline with EventBridge and Lambda",
+              "Improved API response time and DB load through a daily-batch stats table design, automated email reporting with AWS SES"
             ]
           },
           {
@@ -1184,15 +1212,15 @@ const DEF = {
             "titleEn": "Open RAN - Virtual 5G Core Network on Docker",
             "metaKo": "2025.08 - 2025.11",
             "metaEn": "2025.08 - 2025.11",
-            "subKo": "Docker, OpenRAN, 5G Core, Prometheus, Linux",
-            "subEn": "Docker, OpenRAN, 5G Core, Prometheus, Linux",
+            "subKo": "Docker, OpenRAN, 5G Core, srsRAN, Prometheus, Grafana, Linux",
+            "subEn": "Docker, OpenRAN, 5G Core, srsRAN, Prometheus, Grafana, Linux",
             "bulletsKo": [
               "DU · CU · RU · 코어망을 Docker 컨테이너로 분리 가상화하고 컴포넌트 간 통신 흐름 검증",
               "더미 데이터 부하 시뮬레이션 및 Prometheus 컨테이너별 자원 사용량 실시간 수집"
             ],
             "bulletsEn": [
-              "Containerized DU, CU, RU, and core network on Docker; verified inter-component communication",
-              "Load simulation with dummy data; per-container resource metrics collection with Prometheus"
+              "Virtualized DU, CU, RU, and the core network as separate Docker containers and verified the communication flow between components",
+              "Ran dummy-data load simulations and collected per-container resource usage in real time with Prometheus"
             ]
           },
           {
@@ -1200,15 +1228,15 @@ const DEF = {
             "titleEn": "AI Travel Planner - Optimized Itinerary Generator",
             "metaKo": "2023.03 - 2023.06",
             "metaEn": "2023.03 - 2023.06",
-            "subKo": "AWS, Spring Boot, MyBatis, OpenAI API",
-            "subEn": "AWS, Spring Boot, MyBatis, OpenAI API",
+            "subKo": "AWS, Spring Boot, OracleDB, MyBatis, OpenAI API",
+            "subEn": "AWS, Spring Boot, OracleDB, MyBatis, OpenAI API",
             "bulletsKo": [
               "공공데이터 1만 건 + GPT 결합 맞춤 일정 생성, 2-opt TSP 최적화로 응답시간 80% 단축 (60초 → 10초 이하)",
               "인메모리 캐싱으로 DB 부하 최소화, Prompt Engineering으로 일관된 JSON 응답 유도"
             ],
             "bulletsEn": [
-              "Combined 10,000+ public data entries with GPT; 80% response time cut via 2-opt TSP optimization (60s → under 10s)",
-              "Minimized DB load with in-memory caching; enforced consistent JSON output via prompt engineering"
+              "Combined 10,000 public data entries with GPT for tailored itineraries, cut response time by 80% with 2-opt TSP optimization (60s to under 10s)",
+              "Minimized DB load with in-memory caching, enforced consistent JSON responses through prompt engineering"
             ]
           },
           {
@@ -1216,17 +1244,19 @@ const DEF = {
             "titleEn": "Board Game Rules Discord Bot (RAG-based)",
             "metaKo": "2026.05 - ",
             "metaEn": "2026.05 - ",
-            "subKo": "Python, ChromaDB, RAG, Docker, AWS, Terraform, Prometheus",
-            "subEn": "Python, ChromaDB, RAG, Docker, AWS, Terraform, Prometheus",
+            "subKo": "Python, ChromaDB, RAG, Docker, Terraform, AWS (EC2, SQS, Lambda, DynamoDB)",
+            "subEn": "Python, ChromaDB, RAG, Docker, Terraform, AWS (EC2, SQS, Lambda, DynamoDB)",
             "bulletsKo": [
               "ChromaDB · bge-m3 임베딩 기반 다국어 룰북 PDF RAG 파이프라인 설계, Discord 슬래시 명령으로 룰 안내 챗봇 구현",
-              "Ollama + Llama 3.1 8B를 EC2 g6.xlarge(NVIDIA L4 GPU)에 셀프 호스팅, CPU · GPU 워크로드 분리 및 이벤트 기반 처리로 비용 최적화",
+              "Ollama + Llama 3.1 8B를 EC2 g6.xlarge(NVIDIA L4 GPU)에 셀프 호스팅, CPU · GPU 워크로드를 분리하고 SQS 이벤트 기반으로 연결",
+              "무요청 시 GPU scale-to-zero + Spot Instance 적용으로 비용 최적화, DynamoDB 작업 상태 관리로 요청 손실 방지",
               "Terraform으로 IaC 관리, Docker 멀티스테이지 + non-root 컨테이너로 배포 환경 표준화"
             ],
             "bulletsEn": [
-              "Designed a multilingual rulebook PDF RAG pipeline with ChromaDB and bge-m3 embeddings; built a Discord slash-command rules bot",
-              "Self-hosted Ollama + Llama 3.1 8B on EC2 g6.xlarge (NVIDIA L4 GPU); optimized cost via CPU/GPU workload separation and event-driven processing",
-              "Managed EC2, IAM, SG, and Secrets Manager as code with Terraform; standardized deployment with multi-stage Docker builds and non-root containers"
+              "Designed a multilingual rulebook PDF RAG pipeline based on ChromaDB and bge-m3 embeddings, built a rules chatbot on Discord slash commands",
+              "Self-hosted Ollama and Llama 3.1 8B on EC2 g6.xlarge (NVIDIA L4 GPU), separated CPU and GPU workloads and connected them through SQS events",
+              "Optimized cost with GPU scale-to-zero during idle periods and Spot Instances, prevented lost requests through DynamoDB job state management",
+              "Managed infrastructure as code with Terraform, standardized the deployment environment with multi-stage Docker builds and non-root containers"
             ]
           }
         ]
@@ -1236,12 +1266,12 @@ const DEF = {
         "headingEn": "Research",
         "items": [
           {
-            "titleKo": "SCI 논문 1저자 - 시맨틱 통신 이미지 전송 및 채널 할당 제어",
-            "titleEn": "1st-Author SCI Paper - Semantic Communication Image Transmission & Channel Allocation",
-            "metaKo": "중앙대학교 석사과정",
-            "metaEn": "M.S., Chung-Ang Univ.",
-            "subKo": "의미 효율성 최대 73.3% 향상",
-            "subEn": "Up to 73.3% improvement in semantic efficiency",
+            "titleKo": "SCI 논문 1저자 - Feature-importance-aware transmission control in semantic communications",
+            "titleEn": "1st-Author SCI Paper - Feature-importance-aware transmission control in semantic communications",
+            "metaKo": "ICT Express (Elsevier), 2025",
+            "metaEn": "ICT Express (Elsevier), 2025",
+            "subKo": "피쳐 중요도 가중 의미 스펙트럼 효율(wSSE) 지표 제안, 의미 효율성 최대 73.3% 향상 · DOI 10.1016/j.icte.2025.11.007",
+            "subEn": "Proposed importance-weighted semantic spectral efficiency (wSSE), up to 73.3% higher semantic efficiency · DOI 10.1016/j.icte.2025.11.007",
             "bulletsKo": [],
             "bulletsEn": []
           },
@@ -1276,15 +1306,15 @@ const DEF = {
             "titleEn": "DevOps Mentorship (Mentee) - Terraform-based AWS Infrastructure & Operations",
             "metaKo": "2026.01 - ",
             "metaEn": "2026.01 - ",
-            "subKo": "Terraform, Atlantis(GitOps), AWS, Kubernetes(EKS)",
-            "subEn": "Terraform, Atlantis(GitOps), AWS, Kubernetes(EKS)",
+            "subKo": "Terraform, Kubernetes(EKS), ArgoCD, Atlantis(GitOps), AWS",
+            "subEn": "Terraform, Kubernetes(EKS), ArgoCD, Atlantis(GitOps), AWS",
             "bulletsKo": [
               "현직 DevOps 리더에게 멘토링을 받으며 Terraform으로 AWS 인프라 프로비저닝, Atlantis 기반 GitOps로 PR 단위 plan/apply 자동화",
-              "EKS 클러스터 구축 및 컨테이너 워크로드 운영 실습 진행 중"
+              "Terraform으로 EKS 클러스터 프로비저닝, ArgoCD 기반 GitOps로 오픈소스 애플리케이션 배포, ALB Ingress로 외부 트래픽 노출 구성"
             ],
             "bulletsEn": [
-              "Provisioned AWS infrastructure with Terraform and automated PR-level plan/apply via an Atlantis-based GitOps workflow, mentored by a senior DevOps lead",
-              "Currently building EKS clusters and operating containerized workloads"
+              "Provisioned AWS infrastructure with Terraform and automated per-PR plan/apply through Atlantis-based GitOps, mentored by a senior DevOps lead",
+              "Provisioned an EKS cluster with Terraform, deployed open-source applications through ArgoCD-based GitOps, and exposed external traffic via ALB Ingress"
             ]
           }
         ]
@@ -1298,8 +1328,8 @@ const DEF = {
             "titleEn": "Infrastructure & DevOps",
             "metaKo": "",
             "metaEn": "",
-            "subKo": "Terraform, AWS (VPC, ECS, RDS, Lambda, CloudFront), Docker, Kubernetes(EKS), GitHub Actions, Jenkins, Atlantis(GitOps), GitGuardian, Prometheus, Grafana, Linux",
-            "subEn": "Terraform, AWS (VPC, ECS, RDS, Lambda, CloudFront), Docker, Kubernetes(EKS), GitHub Actions, Jenkins, Atlantis(GitOps), GitGuardian, Prometheus, Grafana, Linux",
+            "subKo": "Terraform, AWS (VPC, ECS, EC2, RDS, Lambda, SQS, DynamoDB, CloudFront), Docker, Kubernetes(EKS), GitHub Actions, Jenkins, CodeBuild, Atlantis(GitOps), ArgoCD, GitGuardian, Prometheus, Grafana, Linux",
+            "subEn": "Terraform, AWS (VPC, ECS, EC2, RDS, Lambda, SQS, DynamoDB, CloudFront), Docker, Kubernetes(EKS), GitHub Actions, Jenkins, CodeBuild, Atlantis(GitOps), ArgoCD, GitGuardian, Prometheus, Grafana, Linux",
             "bulletsKo": [],
             "bulletsEn": []
           },
@@ -1308,8 +1338,8 @@ const DEF = {
             "titleEn": "Backend & Data",
             "metaKo": "",
             "metaEn": "",
-            "subKo": "Java, Spring Boot, Python, PostgreSQL(PostGIS), MySQL, MyBatis, Flyway",
-            "subEn": "Java, Spring Boot, Python, PostgreSQL(PostGIS), MySQL, MyBatis, Flyway",
+            "subKo": "Java, Spring Boot, Python, PostgreSQL(PostGIS), MySQL, OracleDB, MyBatis, Flyway",
+            "subEn": "Java, Spring Boot, Python, PostgreSQL(PostGIS), MySQL, OracleDB, MyBatis, Flyway",
             "bulletsKo": [],
             "bulletsEn": []
           }
@@ -1388,7 +1418,30 @@ const DEF = {
         ]
       }
     ]
-  }
+  },
+  "activities": [
+    {
+      "titleKo": "DevOps 멘토링 (멘티) - Terraform 기반 AWS 인프라 구축 및 운영",
+      "titleEn": "DevOps Mentorship (Mentee) - Terraform-based AWS Infrastructure & Operations",
+      "period": "2026.01 -",
+      "statusKo": "진행 중",
+      "statusEn": "Ongoing",
+      "link": "",
+      "tags": "Terraform, Kubernetes(EKS), ArgoCD, Atlantis(GitOps), AWS",
+      "descKo": "현직 DevOps 리더에게 멘토링을 받으며 실제 운영 환경에 가까운 AWS 인프라를 직접 구축하고 운영합니다.",
+      "descEn": "Building and operating AWS infrastructure close to a real production environment, mentored by a senior DevOps lead.",
+      "bulletsKo": [
+        "Terraform으로 AWS 인프라 프로비저닝, Atlantis 기반 GitOps로 PR 단위 plan/apply 자동화",
+        "Terraform으로 EKS 클러스터 프로비저닝, ArgoCD 기반 GitOps로 오픈소스 애플리케이션 배포",
+        "ALB Ingress로 외부 트래픽 노출 구성 및 컨테이너 워크로드 운영"
+      ],
+      "bulletsEn": [
+        "Provisioned AWS infrastructure with Terraform and automated per-PR plan/apply through Atlantis-based GitOps",
+        "Provisioned an EKS cluster with Terraform and deployed open-source applications through ArgoCD-based GitOps",
+        "Exposed external traffic via ALB Ingress and operated containerized workloads"
+      ]
+    }
+  ]
 };
 
 /* ============================================================
@@ -1526,6 +1579,47 @@ function applyProjectsToMain(projects,lang){
         <div class="detail-section"><div class="detail-label">${stackLabel}</div>
           <div class="project-tags">${p.stack.split(',').map(t=>t.trim()).filter(t=>t).map(t=>`<span class="tag">${eh(t)}</span>`).join('')}</div>
         </div>
+      </div></div>
+    </div>`;
+  }).join('');
+}
+
+/* 활동 및 학습 - 프로젝트 카드와 동일한 아코디언, 진행 상태 배지 포함 */
+function applyActivitiesToMain(activities,lang){
+  const list=document.getElementById('activity-list-main');if(!list)return;
+  const ko=lang==='ko';
+  const items=sortByPeriodDesc(activities||[],a=>a.period);
+  const sec=document.getElementById('activities');
+  if(sec)sec.style.display=items.length?'block':'none';
+  list.innerHTML=items.map(a=>{
+    const name=ko?(a.titleKo||a.titleEn):(a.titleEn||a.titleKo);
+    const desc=ko?a.descKo:a.descEn;
+    const bullets=(ko?a.bulletsKo:a.bulletsEn)||[];
+    const status=ko?(a.statusKo||''):(a.statusEn||'');
+    const detailLabel=ko?'주요 내용':'Highlights';
+    const stackLabel=ko?'기술 스택':'Tech Stack';
+    const moreLabel=ko?'상세 보기':'Details';
+    const tags=(a.tags||'').split(',').map(t=>t.trim()).filter(t=>t);
+    return `<div class="project-card" onclick="toggleProject(this)">
+      <div class="project-summary">
+        <div class="project-top">
+          <span class="project-name">${eh(name)}${status?` <span class="tag" style="vertical-align:middle">${eh(status)}</span>`:''}</span>
+          <span style="display:flex;gap:10px;align-items:baseline">
+            ${a.link?`<a class="project-link" href="${eh(a.link)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${ko?'바로가기 ↗':'Visit ↗'}</a>`:''}
+            <span class="project-period">${eh(a.period||'')}</span>
+          </span>
+        </div>
+        ${desc?`<div class="project-desc">${eh(desc)}</div>`:''}
+        ${tags.length?`<div class="project-tags">${tags.map(t=>`<span class="tag">${eh(t)}</span>`).join('')}</div>`:''}
+        <span class="project-more">${moreLabel}</span>
+      </div>
+      <div class="project-detail"><div class="detail-inner">
+        ${bullets.length?`<div class="detail-section"><div class="detail-label">${detailLabel}</div>
+          <ul class="ach-list">${bullets.map(b=>`<li>${eh(b)}</li>`).join('')}</ul>
+        </div>`:''}
+        ${tags.length?`<div class="detail-section"><div class="detail-label">${stackLabel}</div>
+          <div class="project-tags">${tags.map(t=>`<span class="tag">${eh(t)}</span>`).join('')}</div>
+        </div>`:''}
       </div></div>
     </div>`;
   }).join('');
@@ -1680,6 +1774,7 @@ function applyDomesticToMain(domestic){
 function applyLabels(lang){
   const ko=lang==='ko';
   document.getElementById('lbl-projects-title').textContent=ko?'프로젝트':'Projects';
+  document.getElementById('lbl-activities-title').textContent=ko?'활동 및 학습':'Activities & Learning';
   document.getElementById('lbl-skills-title').textContent=ko?'기술 스택':'Tech Stack';
   document.getElementById('lbl-academia-title').textContent=ko?'학술 성과':'Academic Publications';
   document.getElementById('lbl-certs-title').textContent=ko?'자격증 및 학력':'Credentials & Education';
@@ -1706,6 +1801,7 @@ function applyToMain(){
   applyMetrics(ko?D.metricsKo:D.metricsEn);
   applyProjectsToMain(D.projects,lang);
   applyMiniToMain(D.miniProjects,lang);
+  applyActivitiesToMain(D.activities,lang);
   applyCvToMain(D.cv,lang);
   applySkillsToMain(D.skills);
   applyCertsToMain(D.certs,lang);
@@ -1829,6 +1925,9 @@ function renderAdmin(){
     });
   });
 
+  const actList=document.getElementById('a-act-list');
+  if(actList){actList.innerHTML='';(D.activities||[]).forEach((a,i)=>actList.appendChild(activityItemEl(a,i===0)));}
+
   const pl=document.getElementById('a-proj-list');pl.innerHTML='';
   D.projects.forEach((p,i)=>{
     const item=document.createElement('div');
@@ -1951,6 +2050,48 @@ function toggleAdminProj(header){
   const open=body.style.display!=='none';
   body.style.display=open?'none':'flex';
   header.querySelector('span:last-child').textContent=open?'▼':'▲';
+}
+
+/* 활동 및 학습 편집 */
+function activityItemEl(a,open){
+  const item=document.createElement('div');
+  item.className='a-act-item';
+  item.style.cssText='background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden';
+  item.innerHTML=`
+      <div style="padding:12px 18px;background:var(--surface2);display:flex;align-items:center;gap:10px;cursor:pointer" onclick="toggleAdminProj(this)">
+        <span style="font-size:14px;font-weight:700;flex:1">${eh(a.titleKo||'새 활동')}</span>
+        <span style="font-size:11px;color:var(--muted)">${open?'▲':'▼'}</span>
+      </div>
+      <div class="proj-admin-body" style="${open?'display:flex':'display:none'};flex-direction:column;gap:10px;padding:16px">
+        <div class="admin-row3">
+          <div class="admin-field"><div class="admin-input-label">기간</div><input class="admin-input ac-period" value="${eh(a.period||"")}"></div>
+          <div class="admin-field"><div class="admin-input-label">기술 스택 (쉼표)</div><input class="admin-input ac-tags" value="${eh(a.tags||"")}"></div>
+          <div class="admin-field"><div class="admin-input-label">링크 (없으면 비움)</div><input class="admin-input ac-link" value="${eh(a.link||"")}"></div>
+        </div>
+        <div class="admin-row3">
+          <div class="admin-field"><div class="admin-input-label">상태 배지 (KOR, 예 진행 중 / 완료)</div><input class="admin-input ac-status-ko" value="${eh(a.statusKo||"")}"></div>
+          <div class="admin-field"><div class="admin-input-label">상태 배지 (ENG)</div><input class="admin-input ac-status-en" value="${eh(a.statusEn||"")}"></div>
+        </div>
+        <div class="bilingual-grid">
+          <div><div class="bilingual-col-head">🇰🇷 KOR</div>
+            <div class="admin-field"><input class="admin-input ac-title-ko" placeholder="활동명" value="${eh(a.titleKo||"")}"></div>
+            <div class="admin-field"><textarea class="admin-textarea ac-desc-ko" rows="2" placeholder="요약">${eh(a.descKo||"")}</textarea></div>
+            <div class="admin-field"><textarea class="admin-textarea ac-bullets-ko" rows="4" placeholder="주요 내용 (한 줄에 하나)">${eh((a.bulletsKo||[]).join("\n"))}</textarea></div>
+          </div>
+          <div><div class="bilingual-col-head">🇺🇸 ENG</div>
+            <div class="admin-field"><input class="admin-input ac-title-en" placeholder="Activity" value="${eh(a.titleEn||"")}"></div>
+            <div class="admin-field"><textarea class="admin-textarea ac-desc-en" rows="2" placeholder="Summary">${eh(a.descEn||"")}</textarea></div>
+            <div class="admin-field"><textarea class="admin-textarea ac-bullets-en" rows="4" placeholder="Highlights">${eh((a.bulletsEn||[]).join("\n"))}</textarea></div>
+          </div>
+        </div>
+        <div style="text-align:right"><button class="abtn-danger" onclick="this.closest('.a-act-item').remove()">✕ 삭제</button></div>
+      </div>`;
+  return item;
+}
+function addActivity(){
+  const item=activityItemEl({titleKo:'',titleEn:'',period:'',tags:'',link:'',statusKo:'',statusEn:'',descKo:'',descEn:'',bulletsKo:[],bulletsEn:[]},true);
+  document.getElementById('a-act-list').appendChild(item);
+  item.scrollIntoView({behavior:'smooth',block:'center'});
 }
 
 function addProject(){
@@ -2193,6 +2334,23 @@ function saveAll(){
     });
   });
   sv('projects',D.projects);
+  D.activities=[...document.querySelectorAll('.a-act-item')].map(item=>{
+    const b=item.querySelector('.proj-admin-body');
+    return {
+      titleKo:b.querySelector('.ac-title-ko').value,
+      titleEn:b.querySelector('.ac-title-en').value,
+      period:b.querySelector('.ac-period').value,
+      statusKo:b.querySelector('.ac-status-ko').value,
+      statusEn:b.querySelector('.ac-status-en').value,
+      link:b.querySelector('.ac-link').value.trim(),
+      tags:b.querySelector('.ac-tags').value,
+      descKo:b.querySelector('.ac-desc-ko').value,
+      descEn:b.querySelector('.ac-desc-en').value,
+      bulletsKo:b.querySelector('.ac-bullets-ko').value.split('\n').map(s=>s.trim()).filter(s=>s),
+      bulletsEn:b.querySelector('.ac-bullets-en').value.split('\n').map(s=>s.trim()).filter(s=>s),
+    };
+  });
+  sv('activities',D.activities);
   D.miniProjects=[...document.querySelectorAll('.a-mini-item')].map(r=>({
     nameKo:r.querySelector('.mi-name-ko').value,
     nameEn:r.querySelector('.mi-name-en').value,
