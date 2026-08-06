@@ -749,8 +749,8 @@ const DEF = {
       "nameEn": "Cine-Catch",
       "period": "2025.12 - 2026.01",
       "link": "https://github.com/sehoon99/cine-catch",
-      "descKo": "영화관별 한정판 굿즈 재고를 준실시간 크롤링하고, 사용자 위치 기반으로 가장 가까운 보유 매장을 안내하는 서비스. Terraform IaC 기반 인프라 자동화와 DevSecOps CI/CD 파이프라인 구축을 주도.",
-      "descEn": "A service that crawls limited-edition goods inventory per cinema in near real time and guides users to the nearest store holding the item, based on their location. Led Terraform IaC infrastructure automation and the DevSecOps CI/CD pipeline.",
+      "descKo": "영화관별 한정판 굿즈 재고를 실시간 크롤링하고, 사용자 위치 기반으로 가장 가까운 보유 매장을 안내하는 서비스. Terraform IaC 기반 인프라 자동화와 DevSecOps CI/CD 파이프라인 구축을 주도.",
+      "descEn": "A service that crawls limited-edition goods inventory per cinema in real time and guides users to the nearest store holding the item, based on their location. Led Terraform IaC infrastructure automation and the DevSecOps CI/CD pipeline.",
       "tags": "Terraform, Atlantis, AWS, GitHub Actions, GitGuardian, Spring Boot, PostgreSQL(PostGIS), Flyway, Playwright",
       "bulletsKo": [
         "Playwright 기반 크롤러로 CGV사의 동적 렌더링 굿즈 재고 데이터 자동 수집 및 DB 적재",
@@ -759,7 +759,7 @@ const DEF = {
         "Atlantis 기반 GitOps로 PR 단위 terraform plan 자동화 - 인프라 변경 사항을 코드 리뷰 단계에서 사전 검증",
         "GitHub Actions를 통한 CI/CD 구축",
         "SOPS, KMS, SSM 연동 보안 관리",
-        "GitGuardian을 CI/CD에 연동하여 소스코드 내 민감 정보 유출 사전 탐지",
+        "GitGuardian을 CI/CD에 연동하여 소스코드 내 민감 정보 유출 원천 차단",
         "Flyway로 DB 스키마 버전 관리 - 마이그레이션 이력 추적 자동화"
       ],
       "bulletsEn": [
@@ -1170,20 +1170,20 @@ const DEF = {
         "headingEn": "Projects",
         "items": [
           {
-            "titleKo": "Cine-Catch - 영화관 한정판 굿즈 준실시간 재고 안내 서비스",
-            "titleEn": "Cine-Catch - Near-Real-time Cinema Goods Inventory Service",
+            "titleKo": "Cine-Catch - 영화관 한정판 굿즈 실시간 재고 안내 서비스",
+            "titleEn": "Cine-Catch - Real-time Cinema Goods Inventory Service",
             "metaKo": "2025.12 - 2026.01",
             "metaEn": "2025.12 - 2026.01",
-            "subKo": "Terraform, Atlantis, AWS, GitSecOps(GitHub Actions, GitGuardian), Spring Boot, PostgreSQL(PostGIS), Playwright",
-            "subEn": "Terraform, Atlantis, AWS, GitSecOps(GitHub Actions, GitGuardian), Spring Boot, PostgreSQL(PostGIS), Playwright",
+            "subKo": "Terraform, Atlantis, AWS, DevSecOps(GitHub Actions, GitGuardian), Spring Boot, PostgreSQL(PostGIS), Playwright",
+            "subEn": "Terraform, Atlantis, AWS, DevSecOps(GitHub Actions, GitGuardian), Spring Boot, PostgreSQL(PostGIS), Playwright",
             "bulletsKo": [
               "Terraform IaC를 통한 AWS 전체 인프라 코드화로 환경 재현성 확보",
-              "Atlantis 기반 GitOps로 PR 단계 자동 plan 및 검토 파이프라인 구성, GitHub Actions CI/CD 구축, GitGuardian 연동으로 시크릿 유출 사전 탐기",
+              "Atlantis로 PR 단계 자동 plan 및 검토 파이프라인 구성, GitHub Actions CI/CD 구축, GitGuardian 연동으로 시크릿 유출 원천 차단",
               "PostGIS로 사용자 위치 기반 최근접 매장 탐색, Playwright 크롤러로 재고 자동 수집"
             ],
             "bulletsEn": [
               "Codified the entire AWS infrastructure with Terraform IaC, ensuring reproducible environments",
-              "Built a GitOps workflow with Atlantis for automated plan and PR-level review, set up GitHub Actions CI/CD, and integrated GitGuardian for secret leak detection",
+              "Built a Atlantis for automated plan and PR-level review, set up GitHub Actions CI/CD, and integrated GitGuardian for secret leak detection",
               "Implemented location-based nearest-store search with PostGIS and automated stock collection with a Playwright crawler"
             ]
           },
@@ -1192,8 +1192,8 @@ const DEF = {
             "titleEn": "AI-News Tracker - News Trend Analysis & Subscription",
             "metaKo": "2026.02 - 2026.03",
             "metaEn": "2026.02 - 2026.03",
-            "subKo": "Terraform, Jenkins, CodeBuild, AWS, Docker, GitSecOps(GitHub Actions, GitGuardian), Prometheus, Grafana, Spring Boot, MySQL",
-            "subEn": "Terraform, Jenkins, CodeBuild, AWS, Docker, GitSecOps(GitHub Actions, GitGuardian), Prometheus, Grafana, Spring Boot, MySQL",
+            "subKo": "Terraform, Jenkins, CodeBuild, AWS, Docker, DevSecOps(GitHub Actions, GitGuardian), Prometheus, Grafana, Spring Boot, MySQL",
+            "subEn": "Terraform, Jenkins, CodeBuild, AWS, Docker, DevSecOps(GitHub Actions, GitGuardian), Prometheus, Grafana, Spring Boot, MySQL",
             "bulletsKo": [
               "EventBridge 스케줄러 기반 Lambda 크롤러로 매시간 AI 뉴스 수집 후 RDS 적재, 이미지 판별 로직도 Lambda로 분리해 이벤트 기반 처리",
               "Spot Instance + ECS + ASG 조합으로 인프라 비용 50% 이상 절감, Prometheus + Grafana 모니터링",
