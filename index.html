@@ -700,8 +700,8 @@ const DEF = {
   "nameKo": "홍성훈",
   "nameSub": "Hong Seong Hun",
   "birthday": "",
-  "heroTagKo": "Backend / DevOps / Cloud Engineer / FDE · 신입",
-  "heroTagEn": "Backend / DevOps / Cloud Engineer / FDE · Entry-level",
+  "heroTagKo": "Backend / DevOps / Cloud Engineer / FDE - 신입",
+  "heroTagEn": "Backend / DevOps / Cloud Engineer / FDE - Entry-level",
   "heroHighlightKo": "1저자 SCI 논문 보유",
   "heroHighlightEn": "1st-Author SCI Publication",
   "aboutKo": "<img src=\"image/profile.jpg\" alt=\"프로필 사진\" class=\"about-photo\">중앙대학교 컴퓨터공학 석사 과정에서 <strong>네트워크 시스템과 지능형 통신 아키텍처</strong>를 연구했습니다. 효율적인 데이터 전송과 시스템 최적화가 차세대 네트워크의 신뢰성과 확장성을 어떻게 높이는지를 학문적으로 깊이 탐구해온 이 배경은, 자연스럽게 <strong>클라우드 인프라 설계</strong>에 대한 관심으로 이어졌습니다.<br><br>현재는 <strong>AWS, Terraform, Docker</strong> 등을 활용한 클라우드 인프라 설계와 시스템 아키텍처 원칙을 학습하며, 확장 가능하고 비용 효율적인 솔루션을 직접 구현하고 있습니다.<div class=\"about-links\"><a href=\"mailto:sehoon99@naver.com\">sehoon99@naver.com</a><a href=\"https://www.github.com/sehoon99\">GitHub</a><a href=\"https://bright-huny.tistory.com\">Blog</a><a href=\"https://www.linkedin.com/in/seonghun-hong-0928ba238\">LinkedIn</a></div>",
@@ -754,25 +754,23 @@ const DEF = {
       "tags": "Terraform, Atlantis, AWS, GitHub Actions, GitGuardian, Spring Boot, PostgreSQL(PostGIS), Flyway, Playwright",
       "bulletsKo": [
         "Playwright 기반 크롤러로 CGV사의 동적 렌더링 굿즈 재고 데이터 자동 수집 및 DB 적재",
-        "PostGIS 공간 인덱싱으로 사용자 위경도 기반 실시간 최근접 매장 탐색",
+        "PostGIS로 사용자 위경도 기반 실시간 최근접 매장 탐색",
         "Terraform IaC로 VPC, RDS, S3, CloudFront 등 AWS 전체 인프라를 코드화 - 환경 재현성 확보",
-        "Atlantis 기반 GitOps로 PR 단위 terraform plan/apply 자동화 - 인프라 변경 사항을 코드 리뷰 단계에서 사전 검증",
+        "Atlantis 기반 GitOps로 PR 단위 terraform plan 자동화 - 인프라 변경 사항을 코드 리뷰 단계에서 사전 검증",
         "GitHub Actions를 통한 CI/CD 구축",
         "SOPS, KMS, SSM 연동 보안 관리",
         "GitGuardian을 CI/CD에 연동하여 소스코드 내 민감 정보 유출 원천 차단",
-        "CloudFront CDN으로 정적 에셋 배포 - 서버 부하 분산 및 응답속도 향상",
         "Flyway로 DB 스키마 버전 관리 - 마이그레이션 이력 추적 자동화"
       ],
       "bulletsEn": [
-        "Automatically collected and stored CGV's dynamically rendered goods inventory data using a Playwright-based crawler",
-        "Real-time nearest-store search from the user's latitude and longitude using PostGIS spatial indexing",
-        "Codified all AWS infrastructure including VPC, RDS, S3, and CloudFront with Terraform IaC - securing environment reproducibility",
-        "Automated per-PR terraform plan/apply through Atlantis-based GitOps - reviewing infrastructure changes before they are applied",
+        "Automated collection of dynamically rendered merchandise stock data from CGV with a Playwright crawler, persisting results to the database",
+        "Implemented nearest-store search from user coordinates with PostGIS",
+        "Codified the entire AWS infrastructure including VPC, RDS, S3, and CloudFront with Terraform IaC, ensuring reproducible environments",
+        "Automated terraform plan on every pull request with Atlantis-based GitOps, surfacing infrastructure changes for review before apply",
         "Built CI/CD with GitHub Actions",
-        "Security management through SOPS, KMS, and SSM integration",
-        "Integrated GitGuardian into CI/CD to block secret leaks in source code at the root",
-        "Delivered static assets via CloudFront CDN - distributing server load and improving response time",
-        "Managed DB schema versions with Flyway - automated migration history tracking"
+        "Managed secrets with SOPS, KMS, and SSM",
+        "Integrated GitGuardian into CI/CD to detect sensitive information committed to the repository",
+        "Versioned database schema with Flyway, tracking migration history automatically"
       ],
       "stack": "Terraform, Atlantis, AWS, GitHub Actions, GitGuardian, Spring Boot, PostgreSQL(PostGIS), Flyway, Playwright",
       "images": [
@@ -825,18 +823,16 @@ const DEF = {
         "AWS Lambda로 AI 이미지 판별 로직 분리 - 이벤트 기반으로 서버 자원 효율화",
         "Jenkins 오케스트레이션 + CodeBuild 빌드로 CI/CD 구축, Blue/Green 배포",
         "SOPS, KMS, SSM 연동 보안 관리",
-        "CloudFront CDN으로 정적 에셋 배포 - 서버 부하 분산 및 응답속도 향상",
         "Spot Instance + ECS + ASG 조합으로 비용 50% 이상 절감 / Prometheus + Grafana로 실시간 모니터링"
       ],
       "bulletsEn": [
-        "Ran an hourly Lambda crawler via EventBridge Scheduler - built an automated AI news collection and RDS loading pipeline",
-        "Aggregated keyword frequency with a daily batch - improved API response time and DB load by referencing a stats table instead of counting in real time",
-        "Visualized the top 50 keywords with a D3.js bubble chart / automated email delivery of surging keywords via AWS SES",
-        "Separated AI-generated image detection logic into AWS Lambda - improved server resource efficiency through event-driven processing",
-        "Built CI/CD with Jenkins orchestration and CodeBuild builds, with Blue/Green deployment",
-        "Security management through SOPS, KMS, and SSM integration",
-        "Delivered static assets via CloudFront CDN - distributing server load and improving response time",
-        "Over 50% cost reduction with a Spot Instance + ECS + ASG combination / real-time monitoring with Prometheus + Grafana"
+        "Built an hourly news ingestion pipeline with EventBridge-scheduled Lambda crawlers, automatically collecting AI news and loading it into RDS",
+        "Aggregated keyword frequency in a daily batch, serving a precomputed statistics table instead of real-time aggregation to improve API latency and reduce DB load",
+        "Visualized the top 50 keywords in a D3.js bubble chart and automated trending-keyword email alerts with AWS SES",
+        "Decoupled AI image classification into a dedicated Lambda, moving the workload to event-driven execution for better resource efficiency",
+        "Built CI/CD with Jenkins orchestration and CodeBuild, including blue/green deployment",
+        "Managed secrets end to end with SOPS, KMS, and SSM",
+        "Cut infrastructure cost by over 50% with a Spot Instance + ECS + ASG setup, with real-time monitoring via Prometheus and Grafana"
       ],
       "stack": "Terraform, Jenkins, CodeBuild, AWS, GitGuardian, Prometheus, Grafana, Docker, Spring Boot, MySQL, Flyway, D3.js",
       "images": [
@@ -1163,8 +1159,8 @@ const DEF = {
     "right": "Terraform / AWS / Docker / k8s / CI/CD / Monitoring"
   },
   "cv": {
-    "roleKo": "Backend / DevOps / Cloud Engineer / FDE · 신입",
-    "roleEn": "Backend / DevOps / Cloud Engineer / FDE · Entry-level",
+    "roleKo": "Backend / DevOps / Cloud Engineer / FDE - 신입",
+    "roleEn": "Backend / DevOps / Cloud Engineer / FDE - Entry-level",
     "contact": "<a href=\"mailto:sehoon99@naver.com\">sehoon99@naver.com</a><a href=\"https://www.github.com/sehoon99\">github.com/sehoon99</a><a href=\"https://bright-huny.tistory.com\">Blog</a><a href=\"https://www.linkedin.com/in/seonghun-hong-0928ba238\">LinkedIn</a>",
     "summaryKo": "인프라를 기획부터 배포, 운영까지 혼자 책임져본 신입 DevOps 엔지니어입니다. 클라우드 인프라를 Terraform IaC로 재현 가능하게 구성하고, GitHub Actions로 배포 자동화 파이프라인을 구축하며, Prometheus/Grafana 기반의 관측성을 초기 단계부터 확보합니다. 서버리스와 Spot, scale-to-zero, SQS 기반 이벤트 아키텍처를 활용해 운영 비용을 50% 이상 절감하는 등 비용 효율을 극대화하는 관점으로 인프라를 운영합니다. 도구는 유행이 아닌 문제의 규모와 맥락에 맞춰 선택하며, 불필요한 복잡성을 배제한 적정 엔지니어링을 지향합니다. 중앙대학교에서 통신 네트워크를 연구해 SCI 저널 ICT Express에 1저자 논문을 게재하고, 2저자로 참여한 논문에서 ICAIIC 2026 우수논문상을 받았습니다. 경험들을 통해 AWS SAA를 취득하여 빠르게 학습하고 근본 원리까지 파고드는 강점을 갖췄습니다.",
     "summaryEn": "Entry-level DevOps engineer who has independently owned infrastructure end to end, from design through deployment and operations. Builds reproducible cloud infrastructure with Terraform IaC, establishes automated CI/CD pipelines with GitHub Actions, and bakes in observability from the outset with Prometheus/Grafana. Drives cost efficiency as a core principle, cutting operating costs by over 50% through serverless, Spot instances, scale-to-zero, and SQS-based event-driven architecture. Selects tools based on the scale and context of each problem rather than trends, favoring pragmatic engineering that avoids unnecessary complexity. Researched communication networks at Chung-Ang University, publishing a first-author SCI paper in ICT Express and, as second author on a separate paper, receiving the ICAIIC 2026 Excellent Paper Award. Through this experience, earned AWS SAA certification, paired with a strength for rapid learning and reasoning from first principles.",
@@ -1178,17 +1174,17 @@ const DEF = {
             "titleEn": "Cine-Catch - Real-time Cinema Goods Inventory Service",
             "metaKo": "2025.12 - 2026.01",
             "metaEn": "2025.12 - 2026.01",
-            "subKo": "Terraform, Atlantis(GitOps), AWS, GitHub Actions, GitGuardian, Spring Boot, PostgreSQL(PostGIS), Playwright",
-            "subEn": "Terraform, Atlantis(GitOps), AWS, GitHub Actions, GitGuardian, Spring Boot, PostgreSQL(PostGIS), Playwright",
+            "subKo": "Terraform, Atlantis, AWS, GitSecOps(GitHub Actions, GitGuardian), Spring Boot, PostgreSQL(PostGIS), Playwright",
+            "subEn": "Terraform, Atlantis, AWS, GitSecOps(GitHub Actions, GitGuardian), Spring Boot, PostgreSQL(PostGIS), Playwright",
             "bulletsKo": [
-              "Terraform IaC로 VPC · RDS · S3 · CloudFront 등 AWS 전체 인프라 코드화 - 환경 재현성 확보",
-              "Atlantis 기반 GitOps로 PR 단위 plan/apply 자동화, GitHub Actions CI/CD 구축, GitGuardian 연동으로 시크릿 유출 원천 차단",
-              "PostGIS 공간 인덱싱으로 사용자 위치 기반 최근접 매장 실시간 탐색, Playwright 크롤러로 재고 자동 수집"
+              "Terraform IaC를 통한 AWS 전체 인프라 코드화로 환경 재현성 확보",
+              "Atlantis 기반 GitOps로 PR 단계 자동 plan 및 검토 파이프라인 구성, GitHub Actions CI/CD 구축, GitGuardian 연동으로 시크릿 유출 원천 차단",
+              "PostGIS로 사용자 위치 기반 최근접 매장 탐색, Playwright 크롤러로 재고 자동 수집"
             ],
             "bulletsEn": [
-              "Codified all AWS infrastructure including VPC, RDS, S3, and CloudFront with Terraform IaC - securing environment reproducibility",
-              "Automated per-PR plan/apply through Atlantis-based GitOps, built GitHub Actions CI/CD, and blocked secret leaks at the root with GitGuardian",
-              "Real-time nearest-store search based on user location with PostGIS spatial indexing, automated inventory collection with a Playwright crawler"
+              "Codified the entire AWS infrastructure with Terraform IaC, ensuring reproducible environments",
+              "Built a GitOps workflow with Atlantis for automated plan and PR-level review, set up GitHub Actions CI/CD, and integrated GitGuardian for secret leak detection",
+              "Implemented location-based nearest-store search with PostGIS and automated stock collection with a Playwright crawler"
             ]
           },
           {
@@ -1196,17 +1192,17 @@ const DEF = {
             "titleEn": "AI-News Tracker - News Trend Analysis & Subscription",
             "metaKo": "2026.02 - 2026.03",
             "metaEn": "2026.02 - 2026.03",
-            "subKo": "Terraform, Jenkins, CodeBuild, AWS, Docker, GitGuardian, Prometheus, Grafana, Spring Boot, MySQL",
-            "subEn": "Terraform, Jenkins, CodeBuild, AWS, Docker, GitGuardian, Prometheus, Grafana, Spring Boot, MySQL",
+            "subKo": "Terraform, Jenkins, CodeBuild, AWS, Docker, GitSecOps(GitHub Actions, GitGuardian), Prometheus, Grafana, Spring Boot, MySQL",
+            "subEn": "Terraform, Jenkins, CodeBuild, AWS, Docker, GitSecOps(GitHub Actions, GitGuardian), Prometheus, Grafana, Spring Boot, MySQL",
             "bulletsKo": [
-              "Spot Instance + ECS + ASG 조합으로 인프라 비용 50% 이상 절감, Prometheus + Grafana 실시간 모니터링",
-              "Blue/Green 배포 구축(Jenkins 오케스트레이션 + CodeBuild 빌드), EventBridge + Lambda 기반 뉴스 수집 파이프라인 자동화",
-              "Daily Batch 통계 테이블 설계로 API 응답속도 및 DB 부하 개선, AWS SES 이메일 리포팅 자동화"
+              "EventBridge 스케줄러 기반 Lambda 크롤러로 매시간 AI 뉴스 수집 후 RDS 적재, 이미지 판별 로직도 Lambda로 분리해 이벤트 기반 처리",
+              "Spot Instance + ECS + ASG 조합으로 인프라 비용 50% 이상 절감,",
+              "Jenkins 오케스트레이션 + CodeBuild 빌드로 Blue/Green 무중단 배포 구축, SOPS · KMS · SSM 연동으로 시크릿 암호화 및 중앙 관리"
             ],
             "bulletsEn": [
-              "Over 50% infrastructure cost reduction with a Spot Instance + ECS + ASG combination, real-time monitoring with Prometheus and Grafana",
-              "Built Blue/Green deployment (Jenkins orchestration with CodeBuild builds), automated the news collection pipeline with EventBridge and Lambda",
-              "Improved API response time and DB load through a daily-batch stats table design, automated email reporting with AWS SES"
+              "Built an hourly AI news ingestion pipeline with EventBridge-scheduled Lambda crawlers loading into RDS, and decoupled image classification into a separate event-driven Lambda",
+              "Cut infrastructure cost by over 50% with a Spot Instance + ECS + ASG setup",
+              "Established blue/green zero-downtime deployment with Jenkins orchestration and CodeBuild, and centralized secret management with SOPS, KMS, and SSM"
             ]
           },
           {
@@ -1246,8 +1242,8 @@ const DEF = {
             "titleEn": "Board Game Rules Discord Bot (RAG-based)",
             "metaKo": "2026.05 - ",
             "metaEn": "2026.05 - ",
-            "subKo": "Python, ChromaDB, RAG, Docker, Terraform, AWS (EC2, SQS, Lambda, DynamoDB)",
-            "subEn": "Python, ChromaDB, RAG, Docker, Terraform, AWS (EC2, SQS, Lambda, DynamoDB)",
+            "subKo": "Python, ChromaDB, RAG, Docker, Terraform, AWS",
+            "subEn": "Python, ChromaDB, RAG, Docker, Terraform, AWS",
             "bulletsKo": [
               "ChromaDB · bge-m3 임베딩 기반 다국어 룰북 PDF RAG 파이프라인 설계, Discord 슬래시 명령으로 룰 안내 챗봇 구현",
               "Ollama + Llama 3.1 8B를 EC2 g6.xlarge(NVIDIA L4 GPU)에 셀프 호스팅, CPU · GPU 워크로드를 분리하고 SQS 이벤트 기반으로 연결",
