@@ -713,7 +713,7 @@ const DEF = {
     },
     {
       "num": "50%~",
-      "label": "인프라 비용 절감"
+      "label": "컴퓨팅 비용 절감"
     },
     {
       "num": "73.3%",
@@ -731,7 +731,7 @@ const DEF = {
     },
     {
       "num": "50%~",
-      "label": "Infra cost saved"
+      "label": "Computing cost saved"
     },
     {
       "num": "73.3%",
@@ -1162,8 +1162,8 @@ const DEF = {
     "roleKo": "Backend / DevOps / Cloud Engineer / FDE - 신입",
     "roleEn": "Backend / DevOps / Cloud Engineer / FDE - Entry-level",
     "contact": "<a href=\"mailto:sehoon99@naver.com\">sehoon99@naver.com</a><a href=\"https://www.github.com/sehoon99\">github.com/sehoon99</a><a href=\"https://bright-huny.tistory.com\">Blog</a><a href=\"https://www.linkedin.com/in/seonghun-hong-0928ba238\">LinkedIn</a>",
-    "summaryKo": "인프라를 기획부터 배포, 운영까지 혼자 책임져본 신입 DevOps 엔지니어입니다. 클라우드 인프라를 Terraform IaC로 재현 가능하게 구성하고, GitHub Actions로 배포 자동화 파이프라인을 구축하며, Prometheus/Grafana 기반의 관측성을 초기 단계부터 확보합니다. 서버리스와 Spot, scale-to-zero, SQS 기반 이벤트 아키텍처를 활용해 운영 비용을 50% 이상 절감하는 등 비용 효율을 극대화하는 관점으로 인프라를 운영합니다. 도구는 유행이 아닌 문제의 규모와 맥락에 맞춰 선택하며, 불필요한 복잡성을 배제한 적정 엔지니어링을 지향합니다. 중앙대학교에서 통신 네트워크를 연구해 SCI 저널 ICT Express에 1저자 논문을 게재하고, 2저자로 참여한 논문에서 ICAIIC 2026 우수논문상을 받았습니다. 경험들을 통해 AWS SAA를 취득하여 빠르게 학습하고 근본 원리까지 파고드는 강점을 갖췄습니다.",
-    "summaryEn": "Entry-level DevOps engineer who has independently owned infrastructure end to end, from design through deployment and operations. Builds reproducible cloud infrastructure with Terraform IaC, establishes automated CI/CD pipelines with GitHub Actions, and bakes in observability from the outset with Prometheus/Grafana. Drives cost efficiency as a core principle, cutting operating costs by over 50% through serverless, Spot instances, scale-to-zero, and SQS-based event-driven architecture. Selects tools based on the scale and context of each problem rather than trends, favoring pragmatic engineering that avoids unnecessary complexity. Researched communication networks at Chung-Ang University, publishing a first-author SCI paper in ICT Express and, as second author on a separate paper, receiving the ICAIIC 2026 Excellent Paper Award. Through this experience, earned AWS SAA certification, paired with a strength for rapid learning and reasoning from first principles.",
+    "summaryKo": "인프라를 기획부터 배포, 운영까지 혼자 책임져본 신입 DevOps 엔지니어입니다. 클라우드 인프라를 Terraform IaC로 재현 가능하게 구성하고, GitHub Actions로 배포 자동화 파이프라인을 구축하며, Prometheus/Grafana 기반의 관측성을 초기 단계부터 확보합니다. 서버리스와 Spot, scale-to-zero, SQS 기반 이벤트 아키텍처를 활용해 컴퓨팅 비용을 50% 이상 절감하는 등 비용 효율을 극대화하는 관점으로 인프라를 운영합니다. 도구는 유행이 아닌 문제의 규모와 맥락에 맞춰 선택하며, 불필요한 복잡성을 배제한 적정 엔지니어링을 지향합니다. 중앙대학교에서 통신 네트워크를 연구해 SCI 저널 ICT Express에 1저자 논문을 게재하고, 2저자로 참여한 논문에서 ICAIIC 2026 우수논문상을 받았습니다. 경험들을 통해 AWS SAA를 취득하여 빠르게 학습하고 근본 원리까지 파고드는 강점을 갖췄습니다.",
+    "summaryEn": "Entry-level DevOps engineer who has independently owned infrastructure end to end, from design through deployment and operations. Builds reproducible cloud infrastructure with Terraform IaC, establishes automated CI/CD pipelines with GitHub Actions, and bakes in observability from the outset with Prometheus/Grafana. Drives cost efficiency as a core principle, cutting computing costs by over 50% through serverless, Spot instances, scale-to-zero, and SQS-based event-driven architecture. Selects tools based on the scale and context of each problem rather than trends, favoring pragmatic engineering that avoids unnecessary complexity. Researched communication networks at Chung-Ang University, publishing a first-author SCI paper in ICT Express and, as second author on a separate paper, receiving the ICAIIC 2026 Excellent Paper Award. Through this experience, earned AWS SAA certification, paired with a strength for rapid learning and reasoning from first principles.",
     "sections": [
       {
         "headingKo": "프로젝트 경험",
@@ -1196,12 +1196,12 @@ const DEF = {
             "subEn": "Terraform, Jenkins, CodeBuild, AWS, Docker, DevSecOps(GitHub Actions, GitGuardian), Prometheus, Grafana, Spring Boot, MySQL",
             "bulletsKo": [
               "EventBridge 스케줄러 기반 Lambda 크롤러로 매시간 AI 뉴스 수집 후 RDS 적재, 이미지 판별 로직도 Lambda로 분리해 이벤트 기반 처리",
-              "Spot Instance + ECS + ASG 조합으로 인프라 비용 50% 이상 절감, Prometheus + Grafana 모니터링",
+              "Spot Instance + ECS + ASG 조합으로 컴퓨팅 비용 50% 이상 절감, Prometheus + Grafana 모니터링",
               "Jenkins 오케스트레이션 + CodeBuild 빌드로 Blue/Green 무중단 배포 구축, SOPS · KMS · SSM 연동으로 시크릿 암호화 및 중앙 관리"
             ],
             "bulletsEn": [
               "Built an hourly AI news ingestion pipeline with EventBridge-scheduled Lambda crawlers loading into RDS, and decoupled image classification into a separate event-driven Lambda",
-              "Cut infrastructure cost by over 50% with a Spot Instance + ECS + ASG setup, Prometheus + Grafana mornitoring",
+              "Cut computing cost by over 50% with a Spot Instance + ECS + ASG setup, Prometheus + Grafana mornitoring",
               "Established blue/green zero-downtime deployment with Jenkins orchestration and CodeBuild, and centralized secret management with SOPS, KMS, and SSM"
             ]
           },
